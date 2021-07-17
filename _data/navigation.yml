@@ -9,7 +9,7 @@ header:
       # @start locale config
       en      : &EN       Documents
       # @end locale config
-    url: /documents.html
+    url: /documents
 
   - titles:
       # @start locale config
