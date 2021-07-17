@@ -313,7 +313,7 @@ B: I am a partner in a real estate corporation in Ho Chi Minh City – Tôi là 
 B: I am a partner in the Ministry of Investment – Tôi là thành viên của Bộ đầu tư
 ```
 
-## Bạn làm ngành gì? ##
+### Bạn làm ngành gì? ###
 
 Với câu hỏi này, bạn có thể hỏi:
 ```
