@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: article
 comments: true
 title: Donate
 permalink: /donate/
