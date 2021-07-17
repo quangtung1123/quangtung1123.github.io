@@ -1,25 +1,29 @@
 ---
-layout: none
+layout: page
+type: article
 ---
-<!DOCTYPE html>
-{%- include snippets/get-lang.html -%}
-<html lang="{{ __return }}">
-  <head>
-    {%- include analytics.html -%}
-    {%- include head.html -%}
-    <script>
-      {%- include scripts/utils/utils.js -%}
-      {%- include scripts/lib/throttle.js -%}
-      {%- include scripts/lib/lazyload.js -%}
-    </script>
-    {%- include scripts/variables.html -%}
-  </head>
-  <body>
-    <div class="root" data-is-touch="false">
-      {{ content }}
-    </div>
-    <script>
-      {%- include scripts/common.js -%}
-    </script>
-  </body>
-</html>
+
+{%- include snippets/assign.html
+  target = site.data.variables.default.page.sharing
+  source0=layout.sharing source1=page.sharing -%}
+{%- assign _sharing = __return -%}
+
+<div class="layout--article">
+  {%- include article/top/custom.html -%}
+
+  <div class="article__content" itemprop="articleBody">{{ content }}</div>
+
+  {%- if _sharing -%}
+    <section class="article__sharing d-print-none">{%- include sharing.html -%}</section>
+  {%- endif -%}
+
+  <div class="d-print-none">
+    {%- include article-footer.html -%}
+    {%- include article-section-navigator.html -%}
+  </div>
+
+</div>
+
+<script>
+  {%- include scripts/article.js -%}
+</script>
