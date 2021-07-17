@@ -17,5 +17,8 @@ header:
       # @end locale config
     url: /about.html
 
-  - titles: Donate
+  - titles:
+      # @start locale config
+      en      : &EN       Donate
+      # @end locale config
     url: /donate
