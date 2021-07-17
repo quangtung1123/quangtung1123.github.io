@@ -215,6 +215,9 @@ defaults:
       show_subscribe: true
       pageview: true
 
+# JavaScript
+head_scripts:
+  - /assets/js/scroll-to-top.js
 
 ## => Plugins
 ##############################
