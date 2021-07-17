@@ -20,265 +20,259 @@ Nếu bạn đang hoạt động trong lĩnh vực nhân sự, hay bạn đang h
 
 ### Lĩnh vực Luật và An ninh ###
 
-```
-Bodyguard (ˈbɒdɪˌgɑːd): Vệ sĩ
+- Bodyguard (ˈbɒdɪˌgɑːd): Vệ sĩ
+- Judge (ˈʤʌʤ): Quan tòa
+- Forensic scientist (fəˈrɛnsɪk ˈsaɪəntɪst): Nhân viên pháp y
 
-Judge (ˈʤʌʤ): Quan tòa
+- Lawyer (ˈlɔːjə): Luật sư nói chung
 
-Forensic scientist (fəˈrɛnsɪk ˈsaɪəntɪst): Nhân viên pháp y
+- Barrister (ˈbærɪstə): Luật sư bào chữa
 
-Lawyer (ˈlɔːjə): Luật sư nói chung
+- Magistrate (ˈmæʤɪstreɪt): Quan tòa sơ thẩm
 
-Barrister (ˈbærɪstə): Luật sư bào chữa
+- Solicitor (səˈlɪsɪtə): Cố vấn pháp luật
 
-Magistrate (ˈmæʤɪstreɪt): Quan tòa sơ thẩm
+- Prison officer (ˈprɪzn ˈɒfɪsə): Công an ở trại giam
 
-Solicitor (səˈlɪsɪtə): Cố vấn pháp luật
+- Security officer (sɪˈkjʊərɪti ˈɒfɪsə): Nhân viên an ninh
 
-Prison officer (ˈprɪzn ˈɒfɪsə): Công an ở trại giam
+- Customs officer (ˈkʌstəmz ˈɒfɪsə ): Nhân viên hải quan
 
-Security officer (sɪˈkjʊərɪti ˈɒfɪsə): Nhân viên an ninh
+- Policewoman (pəˈliːsˌwʊmən): Cảnh sát
 
-Customs officer (ˈkʌstəmz ˈɒfɪsə ): Nhân viên hải quan
+- Detective (dɪˈtɛktɪv): Thám tử
 
-Policewoman (pəˈliːsˌwʊmən): Cảnh sát
-
-Detective (dɪˈtɛktɪv): Thám tử
-```
 
 ### Lĩnh vực Kỹ thuật và Công nghệ thông tin ###
 
-```
-Programmer (ˈprəʊgræmə): Lập trình viên
 
-Software developer (ˈsɒftweə dɪˈvɛləpə): Nhân viên phát triển phần mềm
+- Programmer (ˈprəʊgræmə): Lập trình viên
 
-Web develope (wɛb develope): Nhân viên phát triển mạng
+- Software developer (ˈsɒftweə dɪˈvɛləpə): Nhân viên phát triển phần mềm
 
-Database administrator (ˈdeɪtəˌbeɪs ədˈmɪnɪstreɪtə): Nhân viên quản lý dữ liệu
+- Web develope (wɛb develope): Nhân viên phát triển mạng
 
-Web designer (wɛb dɪˈzaɪnə): Nhân viên thiết kế mạng
-```
+- Database administrator (ˈdeɪtəˌbeɪs ədˈmɪnɪstreɪtə): Nhân viên quản lý dữ liệu
+
+- Web designer (wɛb dɪˈzaɪnə): Nhân viên thiết kế mạng
+
 
 ### Lĩnh vực Tài chính – Kinh doanh ###
 
-```
-Accountant (əˈkaʊntənt): Kế toán
+- Accountant (əˈkaʊntənt): Kế toán
 
-Economist (i(ː)ˈkɒnəmɪst ): Nhà kinh tế học
+- Economist (i(ː)ˈkɒnəmɪst ): Nhà kinh tế học
 
-Investment analyst (ɪnˈvɛstmənt ˈænəlɪst): Nhà phân tích đầu tư
+- Investment analyst (ɪnˈvɛstmənt ˈænəlɪst): Nhà phân tích đầu tư
 
-Businessman (ˈbɪznɪsmən): Doanh nhân
+- Businessman (ˈbɪznɪsmən): Doanh nhân
 
-Financial adviser (faɪˈnænʃəl ədˈvaɪzə): Cố vấn tài chính
+- Financial adviser (faɪˈnænʃəl ədˈvaɪzə): Cố vấn tài chính
 
-Marketing director (ˈmɑːkɪtɪŋ dɪˈrɛktə): Gám đốc marketing
-```
+- Marketing director (ˈmɑːkɪtɪŋ dɪˈrɛktə): Gám đốc marketing
+
 
 ### Lĩnh vực Y tế và Công tác xã hội ###
 
-```
-Doctor (ˈdɒktə): Bác sĩ
+- Doctor (ˈdɒktə): Bác sĩ
 
-Paramedi: Trợ lý y tế
+- Paramedi: Trợ lý y tế
 
-Psychiatrist (saɪˈkaɪətrɪst): Nhà tâm thần học
+- Psychiatrist (saɪˈkaɪətrɪst): Nhà tâm thần học
 
-Dentist (ˈdɛntɪst): Nha sĩ
+- Dentist (ˈdɛntɪst): Nha sĩ
 
-Physiotherapist (ˌfɪzɪəˈθɛrəpɪst): Nhà trị liệu vật lý
+- Physiotherapist (ˌfɪzɪəˈθɛrəpɪst): Nhà trị liệu vật lý
 
-Nurse (nɜːs): Y tá
+- Nurse (nɜːs): Y tá
 
-Pharmacist (ˈfɑːməsɪst): Dược sĩ
+- Pharmacist (ˈfɑːməsɪst): Dược sĩ
 
-Social worker (ˈsəʊʃəl ˈwɜːkə): Nhân viên công tác xã hội
+- Social worker (ˈsəʊʃəl ˈwɜːkə): Nhân viên công tác xã hội
 
-Veterinary surgeon (ˈvɛtərɪnəri ˈsɜːʤən): Bác sĩ thú y
-```
+- Veterinary surgeon (ˈvɛtərɪnəri ˈsɜːʤən): Bác sĩ thú y
+
 
 ### Lĩnh vực Bán lẻ ###
 
-```
-Baker (beɪkə): Thợ làm bánh
 
-Bookmaker (ˈbʊkˌmeɪkə): Nhà cái (trong cá cược)
+- Baker (beɪkə): Thợ làm bánh
 
-Beautician (bjuːˈtɪʃən): Nhân viên làm đẹp
+- Bookmaker (ˈbʊkˌmeɪkə): Nhà cái (trong cá cược)
 
-Bookkeeper (ˈbʊkˌkiːpə): Kế toán
+- Beautician (bjuːˈtɪʃən): Nhân viên làm đẹp
 
-Florist (ˈflɒrɪst ): Người trồng hoa
+- Bookkeeper (ˈbʊkˌkiːpə): Kế toán
 
-Cashier (kæˈʃɪə): Thu ngân
+- Florist (ˈflɒrɪst ): Người trồng hoa
 
-Shop assistant (ʃɒp əˈsɪstən): Nhân viên bán hàng
+- Cashier (kæˈʃɪə): Thu ngân
 
-Estate agent (ɪsˈteɪt ˈeɪʤənt): Nhân viên bất động sản
+- Shop assistant (ʃɒp əˈsɪstən): Nhân viên bán hàng
 
-Sales assistant (seɪlz əˈsɪstənt): Ttrợ lý bán hàng
+- Estate agent (ɪsˈteɪt ˈeɪʤənt): Nhân viên bất động sản
 
-Shopkeeper (ˈʃɒpˌkiːpə): Chủ cửa hàng
+- Sales assistant (seɪlz əˈsɪstənt): Ttrợ lý bán hàng
 
-Tailor (ˈteɪlə): Thợ may
+- Shopkeeper (ˈʃɒpˌkiːpə): Chủ cửa hàng
 
-Store manager (stɔː ˈmænɪʤə): Người quản lý cửa hàng
+- Tailor (ˈteɪlə): Thợ may
 
-Travel agent (ˈtrævl ˈeɪʤənt): Nhân viên đại lý du lịch
-```
+- Store manager (stɔː ˈmænɪʤə): Người quản lý cửa hàng
+
+- Travel agent (ˈtrævl ˈeɪʤənt): Nhân viên đại lý du lịch
 
 ### Lĩnh vực Khoa học đời sống, tự nhiên và xã hội ###
 
-```
-Biologist (baɪˈɒləʤɪst): Nhà sinh vật học
 
-Scientist (ˈsaɪəntɪst): Nhà khoa học
+- Biologist (baɪˈɒləʤɪst): Nhà sinh vật học
 
-Chemist (ˈkɛmɪst): Nhà hóa học
+- Scientist (ˈsaɪəntɪst): Nhà khoa học
 
-Physicist (ˈfɪzɪsɪst): Nhà vật lý
+- Chemist (ˈkɛmɪst): Nhà hóa học
 
-Meteorologist (ˌmiːtiəˈrɒləʤɪst): Nhà khí tượng học
+- Physicist (ˈfɪzɪsɪst): Nhà vật lý
 
-Lab technician (læb tɛkˈnɪʃən): Nhân viên phòng thí nghiệm
+- Meteorologist (ˌmiːtiəˈrɒləʤɪst): Nhà khí tượng học
 
-Botanist (ˈbɒtənɪst): Nhà thực vật học
+- Lab technician (læb tɛkˈnɪʃən): Nhân viên phòng thí nghiệm
 
-Researcher (rɪˈsɜːʧə): Người làm nghiên cứu
+- Botanist (ˈbɒtənɪst): Nhà thực vật học
 
-Diplomat (ˈdɪpləmæt): Nhà ngoại giao
-```
+- Researcher (rɪˈsɜːʧə): Người làm nghiên cứu
+
+- Diplomat (ˈdɪpləmæt): Nhà ngoại giao
+
 
 ### Lĩnh vực Hành chính – Quản lý ###
 
-```
-HR manager (eɪʧ-ɑː ˈmænɪʤə): Trưởng phòng nhân sự
 
-Personal assistant (ˈpɜːsnl əˈsɪstənt): Thư ký riêng
+- HR manager (eɪʧ-ɑː ˈmænɪʤə): Trưởng phòng nhân sự
 
-Project manager (ˈprɒʤɛkt ˈmænɪʤə): Trưởng phòng/ quản lý dự án
+- Personal assistant (ˈpɜːsnl əˈsɪstənt): Thư ký riêng
 
-Office worker (ˈɒfɪs ˈwɜːkə): Nhân viên văn phòng
+- Project manager (ˈprɒʤɛkt ˈmænɪʤə): Trưởng phòng/ quản lý dự án
 
-Receptionist (rɪˈsɛpʃənɪst): Lễ tân
+- Office worker (ˈɒfɪs ˈwɜːkə): Nhân viên văn phòng
 
-Telephonist (tɪˈlɛfənɪst): Nhân viên trực điện thoại
+- Receptionist (rɪˈsɛpʃənɪst): Lễ tân
 
-Recruitment consultant (rɪˈkruːtmənt kənˈsʌltənt): Chuyên viên tư vấn tuyển dụng
+- Telephonist (tɪˈlɛfənɪst): Nhân viên trực điện thoại
 
-Manager (ˈmænɪʤə): Quản lý/ trưởng phòng
+- Recruitment consultant (rɪˈkruːtmənt kənˈsʌltənt): Chuyên viên tư vấn tuyển dụng
 
-Secretary (ˈsɛkrətri): Thư ký
-```
+- Manager (ˈmænɪʤə): Quản lý/ trưởng phòng
+
+- Secretary (ˈsɛkrətri): Thư ký
+
 
 ### Lĩnh vực Lao động tay chân ###
 
-```
-Cleaner (ˈkliːnə): Lao công
 
-Bricklayer (ˈbrɪkˌleɪə): Thợ xây
+- Cleaner (ˈkliːnə): Lao công
 
-Carpenter (ˈkɑːpɪntə): Thợ mộc
+- Bricklayer (ˈbrɪkˌleɪə): Thợ xây
 
-Electrician (ɪlɛkˈtrɪʃən): Thợ điện
+- Carpenter (ˈkɑːpɪntə): Thợ mộc
 
-Mechanic (mɪˈkænɪk): Thợ sửa máy
+- Electrician (ɪlɛkˈtrɪʃən): Thợ điện
 
-Roofer (ˈruːfə): Thợ lợp mái
+- Mechanic (mɪˈkænɪk): Thợ sửa máy
 
-Glazier (ˈgleɪziə): Thợ lắp kính
+- Roofer (ˈruːfə): Thợ lợp mái
 
-Tiler (ˈtaɪlə): Thợ lợp ngói
+- Glazier (ˈgleɪziə): Thợ lắp kính
 
-Driving instructor (ˈdraɪvɪŋ ɪnˈstrʌktə): Giáo viên dạy lái xe
+- Tiler (ˈtaɪlə): Thợ lợp ngói
 
-Masseuse (mæˈsɜːz): Nữ nhân viên xoa bóp
+- Driving instructor (ˈdraɪvɪŋ ɪnˈstrʌktə): Giáo viên dạy lái xe
 
-Groundsman (ˈgraʊndzmən): Nhân viên trông coi sân bóng
+- Masseuse (mæˈsɜːz): Nữ nhân viên xoa bóp
 
-Decorator (ˈdɛkəreɪtə): Người làm nghề trang trí
+- Groundsman (ˈgraʊndzmən): Nhân viên trông coi sân bóng
 
-Blacksmith (ˈblæksmɪθ): Thợ rèn
+- Decorator (ˈdɛkəreɪtə): Người làm nghề trang trí
 
-Gardener (ˈgɑːdnə): Người làm vườn
+- Blacksmith (ˈblæksmɪθ): Thợ rèn
 
-Plumber (ˈplʌmə): Thợ sửa ống nước
+- Gardener (ˈgɑːdnə): Người làm vườn
 
-Welde: Thợ hàn
-```
+- Plumber (ˈplʌmə): Thợ sửa ống nước
+
+- Welde: Thợ hàn
+
 
 ### Lĩnh vực Lữ hành và khách sạn ###
 
-```
-Cook (kʊk): Đầu bếp
 
-Hotel manager (həʊˈtɛl ˈmænɪʤə ): Quản lý khách sạn
+- Cook (kʊk): Đầu bếp
 
-Chef (ʃɛf): Đầu bếp chính
+- Hotel manager (həʊˈtɛl ˈmænɪʤə ): Quản lý khách sạn
 
-Tourist guide (ˈtʊərɪst gaɪd): Hướng dẫn viên du lịch
+- Chef (ʃɛf): Đầu bếp chính
 
-Bartender (ˈbɑːˌtɛndə): Nhân viên phục vụ quầy bar
+- Tourist guide (ˈtʊərɪst gaɪd): Hướng dẫn viên du lịch
 
-Bouncer (ˈbaʊnsə): Bảo vệ (đứng ở cửa)
+- Bartender (ˈbɑːˌtɛndə): Nhân viên phục vụ quầy bar
 
-Hotel porter (həʊˈtɛl ˈpɔːtə): Nhân viên vận chuyển đồ ở khách sạn
+- Bouncer (ˈbaʊnsə): Bảo vệ (đứng ở cửa)
 
-Waitress (ˈweɪtrɪs): Bồi bàn
-```
+- Hotel porter (həʊˈtɛl ˈpɔːtə): Nhân viên vận chuyển đồ ở khách sạn
+
+- Waitress (ˈweɪtrɪs): Bồi bàn
+
 
 ### Các ngành nghề khác ###
 
-```
-Technicians (tɛkˈnɪʃənz): Kỹ thuật viên
 
-Engineer (ˌɛnʤɪˈnɪə): Kỹ sư
+- Technicians (tɛkˈnɪʃənz): Kỹ thuật viên
 
-Lecturer (ˈlɛkʧərə): Giảng viên
+- Engineer (ˌɛnʤɪˈnɪə): Kỹ sư
 
-Music teacher (ˈmjuːzɪk ˈtiːʧə): Giáo viên dạy nhạc
+- Lecturer (ˈlɛkʧərə): Giảng viên
 
-Train driver (treɪn ˈdraɪvə): Người lái tàu
+- Music teacher (ˈmjuːzɪk ˈtiːʧə): Giáo viên dạy nhạc
 
-Bus driver (bʌs ˈdraɪvə): Người lái xe buýt
+- Train driver (treɪn ˈdraɪvə): Người lái tàu
 
-Flight attendant (flaɪt əˈtɛndənt): Tiếp viên hàng không
+- Bus driver (bʌs ˈdraɪvə): Người lái xe buýt
 
-Pilot (ˈpaɪlət): Phi công
+- Flight attendant (flaɪt əˈtɛndənt): Tiếp viên hàng không
 
-Housewife (ˈhaʊswaɪf): Nội trợ
+- Pilot (ˈpaɪlət): Phi công
 
-Politician (ˌpɒlɪˈtɪʃən): Chính trị gia
+- Housewife (ˈhaʊswaɪf): Nội trợ
 
-Factory worker (ˈfæktəri ˈwɜːkə): Công nhân nhà máy
+- Politician (ˌpɒlɪˈtɪʃən): Chính trị gia
 
-Translator (trænsˈleɪtə): Phiên dịch
+- Factory worker (ˈfæktəri ˈwɜːkə): Công nhân nhà máy
 
-Model (ˈmɒdl): Người mẫu
+- Translator (trænsˈleɪtə): Phiên dịch
 
-Choreographer (ˌkɒrɪˈɒgrəfə): Biên đạo múa
+- Model (ˈmɒdl): Người mẫu
 
-Editor (ˈɛdɪtə): Biên tập viên
+- Choreographer (ˌkɒrɪˈɒgrəfə): Biên đạo múa
 
-Journalist (ˈʤɜːnəlɪst): Nhà báo
+- Editor (ˈɛdɪtə): Biên tập viên
 
-Writer (ˈraɪtə): Nhà văn
+- Journalist (ˈʤɜːnəlɪst): Nhà báo
 
-Graphic designer (ˈgræfɪk dɪˈzaɪnə): Nhân viên thiết kế đồ họa
+- Writer (ˈraɪtə): Nhà văn
 
-Artist (ɑːtɪst): Nghệ sĩ
+- Graphic designer (ˈgræfɪk dɪˈzaɪnə): Nhân viên thiết kế đồ họa
 
-Photographer (fəˈtɒgrəfə): Thợ ảnh
+- Artist (ɑːtɪst): Nghệ sĩ
 
-Playwright (ˈpleɪraɪt): Nhà soạn kịch
+- Photographer (fəˈtɒgrəfə): Thợ ảnh
 
-Singer (ˈsɪŋə): Ca sĩ
+- Playwright (ˈpleɪraɪt): Nhà soạn kịch
 
-Film director (fɪlm dɪˈrɛktə): Đạo diễn phim
+- Singer (ˈsɪŋə): Ca sĩ
 
-Dancer (ˈdɑːnsə): Diễn viên múa
-```
+- Film director (fɪlm dɪˈrɛktə): Đạo diễn phim
+
+- Dancer (ˈdɑːnsə): Diễn viên múa
+
 
 ## 2. Mẫu câu sử dụng từ vựng tiếng Anh theo chủ đề Nghề nghiệp ##
 
@@ -289,46 +283,46 @@ Dưới đây, TOPICA Native sẽ bật mí cho bạn một số mẫu câu thô
 ### Bạn làm việc ở đâu? ###
 
 Với câu hỏi này bạn có thể hỏi:
-```
+
 A: Where are you working? – Bạn làm việc ở đâu?
 
 A: What company do you work for? – Bạn đang làm việc cho công ty nào vậy?
-```
+
 
 Để trả lời cho câu hỏi này bạn có thể áp dụng một số cấu trúc như:
 
 ***I work for + tên công ty/ tổ chức***
 
-```
+
 B: I work for a media company – Tôi làm việc cho một công ty truyền thông
 
 B: I work for a foreign financial corporation – Tôi làm việc cho một tập đoàn tài chính nước ngoài
-```
+
 
 ***I’m a partner in + tên công ty/ tổ chức***
 
-```
+
 B: I am a partner in a real estate corporation in Ho Chi Minh City – Tôi là thành viên của một tập đoàn bất động sản ở thành phố Hồ Chí Minh
 
 B: I am a partner in the Ministry of Investment – Tôi là thành viên của Bộ đầu tư
-```
+
 
 ### Bạn làm ngành gì? ###
 
 Với câu hỏi này, bạn có thể hỏi:
-```
+
 A: What are you doing there? – Bạn đang làm việc gì ở đó?
 
 A: What field are you working in? – Bạn làm việc ở ngành nào?
 
 A: What kind of work are you doing? – Bạn làm đang công việc gì vậy?
-```
+
 
 Để trả lời câu hỏi này bạn có thể áp dụng một số cấu trúc sau:
 
 ***I’m a/an + công việc mà bạn đang làm***
 
-```
+
 B: I am a student – Tôi là sinh viên
 
 B: I am a doctor – Tôi là bác sĩ
@@ -338,11 +332,11 @@ B: I am a doctor – Tôi là bác sĩ
 B: I work as a collector – Tôi đang là một nhân viên thu mua
 
 B: I work as an architect – Tôi đang là một kiến trúc sư
-```
+
 
 ***I work in + công việc bạn đang làm***
 
-```
+
 B: I work in marketing – Tôi làm trong lĩnh vực marketing
 
 B: I work in real estate – Tôi làm trong lĩnh vực bất động sản
@@ -350,7 +344,7 @@ B: I work in real estate – Tôi làm trong lĩnh vực bất động sản
 B: I am unemployed – Tôi đang thất nghiệp
 
 B: I don’t do any work currently – Hiện tại tôi không làm bất cứ công việc gì
-```
+
 
 Nguồn: [topicanative](https://topicanative.edu.vn/tu-vung-tieng-anh-theo-chu-de-nghe-nghiep/)
 

@@ -5,6 +5,7 @@ title: Donate
 permalink: /donate/
 sc_project: 12496370
 sc_security: 12bc3cce
+key: page-donate
 ---
 
 Chào bạn,
