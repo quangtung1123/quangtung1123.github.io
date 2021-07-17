@@ -218,6 +218,7 @@ defaults:
 # JavaScript
 head_scripts:
   - /assets/js/scroll-to-top.js
+  - /assets/js/read-progress.js
 
 ## => Plugins
 ##############################
