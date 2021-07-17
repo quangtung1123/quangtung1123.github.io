@@ -1,6 +1,12 @@
 header:
   - titles:
       # @start locale config
+      en      : *EN       Documents
+      # @end locale config
+    url: /documents.html
+    
+  - titles:
+      # @start locale config
       en      : &EN       Archive
       en-GB   : *EN
       en-US   : *EN
@@ -48,3 +54,9 @@ header:
       fr-LU   : *FR
       # @end locale config
     url: /about.html
+
+  - titles:
+      # @start locale config
+      en      : *EN       Donate
+      # @end locale config
+    url: /donate.html
