@@ -147,62 +147,22 @@ pre.code {
     // margin: 10px;
 }
 
+/* scroll-to-top CSS */
+div {
+  height: 1000px;
+}
+
 #scroll-to-top {
-    display: block;
-    position: fixed;
-    font-size: 21px;
-    @media (max-width: 600px) {
-        font-size: 20px;
-    }
-    bottom: 25px;
-    right: 10%;
-    @media (max-width: 600px) {
-        right: 5%;
-        bottom: 15px;
-    }
-    
-    opacity: 0;
-    z-index: 99;
-    text-align: center;
-    
-    :last-child {
-      transition: transform 0.7s ease-in-out;
-      
-      &:active, &:hover {
-         transform: translateY(-10%);
-      }
-    }
-    transform: translateY(30%);
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  display: hidden;
+  position: fixed;
+  font-size: 20px;
+  bottom: 10%;
+  right: 10%;
+  opacity: 1;
+  z-index: 10;
+  cursor: pointer; 
 }
-
-
-#scroll-to-top span {
-    cursor: pointer;
-    color: #1a1d24;
-
-    &:hover, &:active {
-        .up-arrow {
-            color: #00adb5;
-        }
-    }
-}
-
-.highlighter-rouge {
-    background: gray;
-}
-
-@media all and (max-width: 360px) {
-    div.highlighter-rouge {
-        font-size: .4em;
-    }
-}
-
-@media all and (max-width: 460px) {
-    div.highlighter-rouge {
-        font-size: .5em;
-    }
-}
+/* scroll-to-top CSS End */
 
 /* Progress Bar CSS */
 #progress-bar {
