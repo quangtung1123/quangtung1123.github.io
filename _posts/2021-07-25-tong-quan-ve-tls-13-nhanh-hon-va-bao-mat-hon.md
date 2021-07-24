@@ -9,14 +9,14 @@ tags: Server TLS1.3 TLS
 category: TLS
 sc_project: 12494739
 sc_security: d785a534
-img: /assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh1.webp
+img: /assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh1.jpg
 summary: Tổng quan về TLS 1.3 - Nhanh hơn và bảo mật hơn
 
 ---
 
 <div class="imgcap">
 <div >
-    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh1.webp" width = "800">
+    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh1.jpg" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
@@ -27,7 +27,7 @@ Sau 28 bản cập nhật thì đến tháng 8 năm 2018 giao thức TLS phiên 
 
 <div class="imgcap">
 <div >
-    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh2.webp" width = "800">
+    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh2.jpg" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
@@ -63,7 +63,7 @@ RSA sử dụng mã hóa khóa công khai để trao đổi *pre-master secret* 
 
 <div class="imgcap">
 <div >
-    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh3.webp" width = "800">
+    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh3.jpg" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
@@ -72,7 +72,7 @@ Diffie-Hellman là một method để cả client và server cùng đi đến đ
 
 <div class="imgcap">
 <div >
-    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh4.webp" width = "800">
+    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh4.jpg" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
@@ -91,7 +91,7 @@ Dưới đây là có chế handshake của TLS 1.2
 
 <div class="imgcap">
 <div >
-    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh5.webp" width = "800">
+    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh5.jpg" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
@@ -111,7 +111,7 @@ Và ta sẽ cùng đến với quá trình handshake của TLS 1.3 nó được 
 
 <div class="imgcap">
 <div >
-    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh6.webp" width = "800">
+    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh6.jpg" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
@@ -128,7 +128,7 @@ TLS 1.2 và những người tiền nhiệm của nó sử dụng Cipher Suites 
 
 <div class="imgcap">
 <div >
-    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh7.webp" width = "800">
+    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh7.jpg" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
@@ -137,7 +137,7 @@ Trong TLS 1.3 cipher suites không còn bao gồm các thuật toán trao đổi
 
 <div class="imgcap">
 <div >
-    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh8.webp" width = "800">
+    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh8.jpg" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
@@ -158,7 +158,7 @@ TLS 1.3 hiện được hỗ trợ cho Chorme (67+), Firefox (61+), Opera (57+),
 
 <div class="imgcap">
 <div >
-    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh9.webp" width = "800">
+    <img src="/assets/tong-quan-ve-tls-13-nhanh-hon-va-bao-mat-hon/Hinh9.jpg" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
