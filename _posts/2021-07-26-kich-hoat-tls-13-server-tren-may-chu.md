@@ -46,7 +46,7 @@ ssl_protocols TLSv1.2 TLSv1.3;
 - Khởi động lại Nginx:
 
 ```
-service nginx restart
+systemctl restart nginx
 ```
 
 ## Bật TLS 1.3 trong Apache ##
@@ -82,7 +82,7 @@ Tuy nhiên, nếu bạn cần vô hiệu hóa hoặc kiểm tra, thì đây là 
 
 <div class="imgcap">
 <div >
-    <img src="//assets/kich-hoat-tls-13-server-tren-may-chu/Hinh1.png" width = "800">
+    <img src="/assets/kich-hoat-tls-13-server-tren-may-chu/Hinh1.png" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
@@ -101,7 +101,7 @@ Có nhiều cách để kiểm tra nó:
 
 <div class="imgcap">
 <div >
-    <img src="//assets/kich-hoat-tls-13-server-tren-may-chu/Hinh2.png" width = "800">
+    <img src="/assets/kich-hoat-tls-13-server-tren-may-chu/Hinh2.png" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
@@ -110,7 +110,7 @@ Có nhiều cách để kiểm tra nó:
 
 <div class="imgcap">
 <div >
-    <img src="//assets/kich-hoat-tls-13-server-tren-may-chu/Hinh3.png" width = "800">
+    <img src="/assets/kich-hoat-tls-13-server-tren-may-chu/Hinh3.png" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
@@ -127,7 +127,7 @@ Bạn sẽ thấy tất cả những gì về các giao thức được kích ho
   
 <div class="imgcap">
 <div >
-    <img src="//assets/kich-hoat-tls-13-server-tren-may-chu/Hinh4.png" width = "800">
+    <img src="/assets/kich-hoat-tls-13-server-tren-may-chu/Hinh4.png" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
