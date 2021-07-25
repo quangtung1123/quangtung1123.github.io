@@ -152,7 +152,7 @@ Làm cách nào để bạn đảm bảo trình duyệt của mình hỗ trợ p
 
 **Tài liệu tham khảo**
 
-- [geekflare](hhttps://geekflare.com/enable-tls-1-3-in-browsers/)
+- [geekflare](https://geekflare.com/enable-tls-1-3-in-browsers/)
 - [microsoft](https://docs.microsoft.com/en-us/windows/win32/secauthn/protocols-in-tls-ssl--schannel-ssp-)
 - [microsoft-dev](https://devblogs.microsoft.com/premier-developer/microsoft-tls-1-3-support-reference/)
 
