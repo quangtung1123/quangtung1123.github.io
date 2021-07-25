@@ -28,8 +28,7 @@
       <div>
         {%- include snippets/get-locale-string.html key='COPYRIGHT_DATES' -%}
         {%- assign _locale_copyright_dates = __return -%}
-        ©  {%- if site.title -%}
-            <a title="{%- if site.description -%}{{ site.description }}{%- endif -%}" href="{{ __return }}">{{ site.title }}</a>
+        © <a href="https://quangtung1123.github.io/"> {{ site.title }} </a>
           {%- endif -%}  {{ _locale_copyright_dates }}.
       </div>
     </div>
