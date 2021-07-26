@@ -38,7 +38,9 @@ Trước khi triển khai header này, bạn phải đảm bảo rằng tất c�
 
 HSTS header được hỗ trợ trên tất cả các phiên bản mới nhất của trình duyệt như IE, Firefox, Opera, Safari và Chrome. Có ba tham số cấu hình:
 
+|------------------+---------|
 | Giá trị tham số | Ý nghĩa |
+|:----------------:|:---------|
 | max-age | Khoảng thời gian (tính bằng giây) để thông báo cho trình duyệt biết rằng các yêu cầu chỉ khả dụng qua HTTPS. |
 | includeSubDomains | Cấu hình cũng có hiệu lực cho tên miền phụ. |
 | preload | Sử dụng nếu bạn muốn tên miền của mình được đưa vào [danh sách tải trước HSTS](https://hstspreload.appspot.com/) |
@@ -100,135 +102,194 @@ Sử dụng header X-Frame-Options để ngăn chặn lỗ hổng **Clickjacking
 
 Bạn có thể cấu hình ba thông số sau.
 
+|------------------+---------|
 | Giá trị tham số | Ý nghĩa |
+|:----------------:|:---------|
 | SAMEORIGIN | Frame/iframe của nội dung chỉ được phép từ cùng một nguồn gốc trang web. |
 | DENY | Ngăn bất kỳ tên miền nào nhúng nội dung của bạn bằng frame/iframe. |
 | ALLOW-FROM | Chỉ cho phép đóng khung nội dung trên một URI cụ thể. |
 
 Hãy xem cách triển khai “DENY” để không có miền nào nhúng trang web.
 
-Apache
-Thêm dòng sau vào httpd.confvà khởi động lại máy chủ web để xác minh kết quả.
+### Apache ###
 
-Tiêu đề luôn thêm X-Frame-Options DENY
-Nginx
-Thêm phần sau vào nginx.confdưới lệnh / khối máy chủ.
+Thêm dòng sau vào httpd.conf và khởi động lại máy chủ web để xác minh kết quả.
 
-add_header X-Frame-Options “DENY”;
+```
+Header always append X-Frame-Options DENY
+```
+
+### Nginx ###
+
+Thêm phần sau vào nginx.conf dưới khối lệnh server directive/.
+
+    add_header X-Frame-Options “DENY”;
 
 Khởi động lại để xác minh kết quả
 
-F5 LTM
-Tạo iRule với phần sau và được liên kết với máy chủ ảo tương ứng.
+### F5 LTM ###
 
-khi HTTP_RESPONSE {
+Tạo iRule với phần sau và liên kết với máy chủ ảo tương ứng.
 
-HTTP :: chèn tiêu đề "X-FRAME-OPTIONS" "DENY"
+    when HTTP_RESPONSE {
+    
+    HTTP::header insert "X-FRAME-OPTIONS" "DENY"
+    
+    }
 
-}
-Bạn không cần phải khởi động lại bất cứ điều gì, các thay đổi được phản ánh trong không khí.
+Bạn không cần phải khởi động lại bất cứ điều gì, các thay đổi được áp dụng ngay.
 
-WordPress
-Bạn cũng có thể triển khai tiêu đề này thông qua WordPress. Thêm phần sau vào tệp wp-config.php
+### WordPress ###
 
-header ('X-Frame-Options: DENY);
-Nếu bạn không thoải mái khi chỉnh sửa tệp, thì bạn có thể sử dụng một plugin như được giải thích ở đây hoặc đã đề cập ở trên.
+Bạn cũng có thể triển khai header này thông qua WordPress. Thêm phần sau vào tệp wp-config.php
 
-Microsoft IIS
-Thêm tiêu đề bằng cách đi tới “Tiêu đề phản hồi HTTP” cho trang web tương ứng.
+    header('X-Frame-Options: DENY);
 
-iis-x-frame-options
+Nếu bạn không thoải mái khi chỉnh sửa tệp, thì bạn có thể sử dụng một plugin như được [giải thích ở đây](https://geekflare.com/wordpress-x-frame-options-httponly-cookie/) hoặc đã đề cập [ở đây](https://wordpress.org/plugins/http-headers/).
 
-Khởi động lại trang web để xem kết quả.
+### Microsoft IIS ###
 
-X-Content-Type-Options
-Ngăn chặn các loại rủi ro bảo mật MIME bằng cách thêm tiêu đề này vào phản hồi HTTP của trang web của bạn. Việc có tiêu đề này hướng dẫn trình duyệt xem xét các loại tệp như được xác định và không cho phép dò tìm nội dung. Chỉ có một tham số bạn phải thêm "nosniff".
+- Thêm header bằng cách đi tới “HTTP Response Headers” cho trang web tương ứng.
 
-Hãy xem làm thế nào để quảng cáo tiêu đề này.
+<div class="imgcap">
+<div >
+    <img src="/assets/bao-mat-http-header/iis-x-frame-options.png" width = "800">
+</div>
+<div class="thecap"></div>
+</div>
 
-Apache
-Bạn có thể thực hiện việc này bằng cách thêm dòng dưới đây vào tệp httpd.conf
+- Khởi động lại trang web để xem kết quả.
 
-Bộ tiêu đề X-Content-Type-Options nosniff
-Đừng quên khởi động lại máy chủ web Apache để cấu hình hoạt động.
+## 3. X-Content-Type-Options ##
 
-Nginx
-Thêm dòng sau vào nginx.conftệp dưới khối máy chủ.
+Ngăn chặn các loại rủi ro bảo mật MIME bằng cách thêm header này vào phản hồi HTTP của trang web của bạn. Việc có header này hướng dẫn trình duyệt xem xét các loại tệp như được xác định và không cho phép dò tìm nội dung. Chỉ có một tham số bạn phải thêm "nosniff".
 
-add_header X-Content-Type-Options nosniff;
-Như thường lệ, bạn phải khởi động lại Nginx để kiểm tra kết quả.
+### Apache ###
 
-Microsoft IIS
-Mở IIS và chuyển đến Tiêu đề phản hồi HTTP
+- Bạn có thể thực hiện việc này bằng cách thêm dòng dưới đây vào tệp httpd.conf
 
-Nhấp vào Thêm và nhập Tên và Giá trị
+    Header set X-Content-Type-Options nosniff
 
-iis-mime-type
+- Đừng quên khởi động lại máy chủ web Apache để cấu hình hoạt động.
 
-Nhấp vào OK và khởi động lại IIS để xác minh kết quả.
+### Nginx ###
 
-Chính sách bảo mật nội dung
-Ngăn chặn các cuộc tấn công XSS, clickjacking, chèn mã bằng cách triển khai tiêu đề Chính sách bảo mật nội dung (CSP) trong phản hồi HTTP trang web của bạn. CSP hướng dẫn trình duyệt tải nội dung được phép tải trên trang web.
+- Thêm dòng sau vào tệp nginx.conf dưới khối server.
 
-Tất cả các trình duyệt không hỗ trợ CSP , vì vậy bạn phải xác minh trước khi triển khai nó. Có ba cách để bạn có thể đạt được tiêu đề CSP.
+    add_header X-Content-Type-Options nosniff;
 
-Nội dung-Bảo mật-Chính sách - Mức 2 / 1.0
-X-Content-Security-Policy - Không được dùng nữa
-X-Webkit-CSP - Không được dùng nữa
+- Như thường lệ, bạn phải khởi động lại Nginx để kiểm tra kết quả.
+
+### Microsoft IIS ###
+
+- Mở IIS và chuyển đến HTTP Response Headers
+- Nhấp vào Add và nhập vào Name và Value
+
+<div class="imgcap">
+<div >
+    <img src="/assets/bao-mat-http-header/iis-mime-type.png" width = "800">
+</div>
+<div class="thecap"></div>
+</div>
+
+- Nhấp vào OK và khởi động lại IIS để xác minh kết quả.
+
+## Content Security Policy ##
+
+Ngăn chặn các cuộc tấn công XSS, clickjacking, **code injection** bằng cách triển khai Content Security Policy (CSP) header trong phản hồi HTTP trang web của bạn. CSP hướng dẫn trình duyệt tải nội dung được phép tải trên trang web.
+
+Tất cả các trình duyệt không hỗ trợ CSP, vì vậy bạn phải xác minh trước khi triển khai nó. Có ba cách để bạn có thể đạt được tiêu đề CSP.
+
+- Content-Security-Policy – Mức 2/1.0
+- X-Content-Security-Policy – Không dùng nữa
+- X-Webkit-CSP – Không dùng nữa
+
 Nếu bạn vẫn đang sử dụng phiên bản không dùng nữa, thì bạn có thể xem xét nâng cấp lên phiên bản mới nhất.
 
-Có thể có nhiều tham số để triển khai CSP và bạn có thể tham khảo OWASP để biết ý tưởng. Tuy nhiên, hãy cùng điểm qua hai tham số được sử dụng nhiều nhất.
+Có thể có nhiều tham số để triển khai CSP và bạn có thể tham khảo [OWASP](https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#Content-Security-Policy) để biết ý tưởng. Tuy nhiên, hãy cùng điểm qua hai tham số được sử dụng nhiều nhất.
 
-Giá trị tham số	Nghĩa
-default-src	Tải mọi thứ từ một nguồn đã xác định
-script-src	Chỉ tải các tập lệnh từ một nguồn đã xác định
+|------------------+---------|
+| Giá trị tham số | Ý nghĩa |
+|:----------------:|:---------|
+| default-src | Tải mọi thứ từ một nguồn đã xác định |
+| script-src | Chỉ tải các tập lệnh từ một nguồn đã xác định |
+
 Ví dụ sau về tải mọi thứ từ cùng một nguồn gốc trong các máy chủ web khác nhau.
 
-Apache
-Thêm phần sau vào httpd.conftệp và khởi động lại máy chủ web để có hiệu lực.
+### Apache ###
 
-Bộ tiêu đề Nội dung-Bảo mật-Chính sách "default-src 'self';"
-Nginx
-Thêm phần sau vào khối máy chủ trong nginx.conftệp
+- Thêm phần sau vào tệp httpd.conf và khởi động lại máy chủ web để có hiệu lực.
 
-add_header Nội dung-Bảo mật-Chính sách "default-src 'self';";
-Microsoft IIS
-Đi tới Tiêu đề phản hồi HTTP cho trang web tương ứng của bạn trong Trình quản lý IIS và thêm phần sau
+    Header set Content-Security-Policy "default-src 'self';"
 
-iis-csp
+### Nginx ###
 
-Kiểm tra điều này để triển khai tổ tiên khung bằng CSP. Đây là phiên bản nâng cao của X-Frame-Options.
+- Thêm phần sau vào khối server trong tệp nginx.conf
 
-Chính sách X-Được phép-Chéo Tên miền
+    add_header Content-Security-Policy "default-src 'self';";
+
+### Microsoft IIS ###
+
+Đi tới HTTP Response Headers cho trang web tương ứng của bạn trong IIS Manager và thêm phần sau
+
+<div class="imgcap">
+<div >
+    <img src="/assets/bao-mat-http-header/iis-csp.png" width = "800">
+</div>
+<div class="thecap"></div>
+</div>
+
+Kiểm tra điều này để triển khai [frame-ancestors](https://geekflare.com/csp-frame-ancestors-configuration/) bằng CSP. Đây là phiên bản nâng cao của X-Frame-Options.
+
+## 5. X-Permitted-Cross-Domain-Policies ##
+
 Sử dụng các sản phẩm của Adobe như PDF, Flash, v.v.?
 
-Bạn có thể triển khai tiêu đề này để hướng dẫn trình duyệt cách xử lý các yêu cầu qua miền chéo. Bằng cách triển khai tiêu đề này, bạn hạn chế tải nội dung trang web của mình từ các miền khác để tránh lạm dụng tài nguyên.
+Bạn có thể triển khai header này để hướng dẫn trình duyệt cách xử lý các yêu cầu qua miền chéo. Bằng cách triển khai header này, bạn hạn chế tải nội dung trang web của mình từ các miền khác để tránh lạm dụng tài nguyên.
 
 Có một số tùy chọn có sẵn.
 
-Giá trị	Sự miêu tả
-không ai	không có chính sách nào được cho phép
-chỉ dành cho chính chủ	chỉ cho phép chính sách chính
-tất cả các	mọi thứ đều được phép
-chỉ theo nội dung	Chỉ cho phép một loại nội dung nhất định. Ví dụ - XML
-by-ftp-only	chỉ áp dụng cho máy chủ FTP
-Apache
-Nếu bạn không muốn cho phép bất kỳ chính sách nào.
+|---------+---------|
+| Giá trị | Ý nghĩa |
+|:--------:|:---------|
+| none | không có chính sách nào được cho phép |
+| master-only | chỉ cho phép chính sách chính |
+| all | mọi thứ đều được phép |
+| by-content-only | Chỉ cho phép một loại nội dung nhất định. Ví dụ - XML |
+| by-ftp-only | chỉ áp dụng cho máy chủ FTP |
 
-Header set X-Permitted-Cross-Domain-Policies "none"
-Bạn sẽ thấy tiêu đề như sau.
+### Apache ###
 
-miền chéo được phép
+- Nếu bạn không muốn cho phép bất kỳ chính sách nào.
 
-Nginx
-Và, giả sử bạn cần triển khai master-only, sau đó thêm phần sau vào nginx.confdưới serverkhối.
+    Header set X-Permitted-Cross-Domain-Policies "none"
 
-add_header X-Permitted-Cross-Domain-Policies master-only;
+Bạn sẽ thấy header như sau.
+
+<div class="imgcap">
+<div >
+    <img src="/assets/bao-mat-http-header/permitted-cross-domain.png" width = "800">
+</div>
+<div class="thecap"></div>
+</div>
+
+### Nginx ###
+
+Và, giả sử bạn cần triển khai master-only, thì thêm phần sau vào tệp nginx.conf dưới khối server.
+
+    add_header X-Permitted-Cross-Domain-Policies master-only;
+
 Và kết quả.
 
-nginx-allow-cross
+<div class="imgcap">
+<div >
+    <img src="/assets/bao-mat-http-header/nginx-allow-cross.png" width = "800">
+</div>
+<div class="thecap"></div>
+</div>
 
-Liên kết giới thiệu-Chính sách
+## 6. Referrer-Policy ##
+
 Tìm cách kiểm soát chính sách liên kết giới thiệu của trang web của bạn? Có một số lợi ích về quyền riêng tư và bảo mật. Tuy nhiên, không phải tất cả các tùy chọn đều được tất cả các trình duyệt hỗ trợ, vì vậy hãy xem xét các yêu cầu của bạn trước khi triển khai.
 
 Liên kết giới thiệu-Chính sách hỗ trợ cú pháp sau.
@@ -248,7 +309,12 @@ Bạn có thể thêm phần sau nếu bạn muốn đặt liên kết không gi
 Header set Referrer-Policy "no-referrer"
 Và sau khi khởi động lại, bạn sẽ có trong tiêu đề phản hồi.
 
-người giới thiệu-chính sách-apache
+<div class="imgcap">
+<div >
+    <img src="/assets/bao-mat-http-header/referrer-policy-apache.png" width = "800">
+</div>
+<div class="thecap"></div>
+</div>
 
 Nginx
 Giả sử bạn cần triển khai cùng một nguồn gốc, vì vậy bạn phải thêm phần sau.
@@ -256,7 +322,12 @@ Giả sử bạn cần triển khai cùng một nguồn gốc, vì vậy bạn p
 add_header Referrer-Policy same-origin;
 Sau khi cấu hình, bạn sẽ có kết quả bên dưới.
 
-người giới thiệu-nginx-same-origin
+<div class="imgcap">
+<div >
+    <img src="/assets/bao-mat-http-header/referrer-nginx-same-origin.png" width = "800">
+</div>
+<div class="thecap"></div>
+</div>
 
 Expect-CT
 Tiêu đề mới vẫn ở trạng thái thử nghiệm là hướng dẫn trình duyệt xác thực kết nối với máy chủ web về tính minh bạch của chứng chỉ (CT). Dự án này của Google nhằm khắc phục một số lỗi trong hệ thống chứng chỉ SSL / TLS .
@@ -273,7 +344,12 @@ Giả sử bạn muốn thực thi chính sách, báo cáo và bộ nhớ cache 
 Header set Expect-CT 'enforce, max-age=43200, report-uri="https://somedomain.com/report"'
 Và đây là kết quả.
 
-mong đợi-ct-apache-http
+<div class="imgcap">
+<div >
+    <img src="/assets/bao-mat-http-header/expect-ct-apache-http.png" width = "800">
+</div>
+<div class="thecap"></div>
+</div>
 
 Nginx
 Nếu bạn muốn báo cáo và lưu vào bộ nhớ cache trong 1 giờ thì sao?
@@ -281,7 +357,12 @@ Nếu bạn muốn báo cáo và lưu vào bộ nhớ cache trong 1 giờ thì s
 add_header Expect-CT 'max-age=60, report-uri="https://mydomain.com/report"';
 Đầu ra sẽ là.
 
-Mong-ct-nginx
+<div class="imgcap">
+<div >
+    <img src="/assets/bao-mat-http-header/expect-ct-nginx.png" width = "800">
+</div>
+<div class="thecap"></div>
+</div>
 
 Quyền-Chính sách
 Trước đó được gọi là Chính sách tính năng, nó được đổi tên thành Chính sách quyền với các tính năng nâng cao. Bạn có thể xem phần này để hiểu những thay đổi lớn giữa Tính năng-Chính sách đối với Quyền-Chính sách.
@@ -299,17 +380,18 @@ Làm thế nào về việc thêm nhiều tính năng trong một dòng?
 Header always set Permissions-Policy "fullscreen 'none'; microphone 'none'"
 Khởi động lại Apache HTTP để xem kết quả.
 
-HTTP/1.1 200 OK
-Date: Thu, 29 Apr 2021 06:40:43 GMT
-Server: Apache/2.4.37 (centos)
-Permissions-Policy: fullscreen 'none'; microphone 'none'
-Last-Modified: Thu, 29 Apr 2021 06:40:41 GMT
-ETag: "3-5c116c620a6f1"
-Accept-Ranges: bytes
-Content-Length: 3
-Keep-Alive: timeout=5, max=100
-Connection: Keep-Alive
-Content-Type: text/html; charset=UTF-8
+    HTTP/1.1 200 OK
+    Date: Thu, 29 Apr 2021 06:40:43 GMT
+    Server: Apache/2.4.37 (centos)
+    Permissions-Policy: fullscreen 'none'; microphone 'none'
+    Last-Modified: Thu, 29 Apr 2021 06:40:41 GMT
+    ETag: "3-5c116c620a6f1"
+    Accept-Ranges: bytes
+    Content-Length: 3
+    Keep-Alive: timeout=5, max=100
+    Connection: Keep-Alive
+    Content-Type: text/html; charset=UTF-8
+    
 Đoạn mã trên sẽ hướng dẫn trình duyệt tắt chế độ toàn màn hình và micrô.
 
 Bạn cũng có thể tắt hoàn toàn tính năng này bằng cách để trống danh sách cho phép.
@@ -319,17 +401,17 @@ Ví dụ: bạn có thể thêm phần sau để tắt tính năng định vị.
 Header always set Permissions-Policy "geolocation=()"
 Điều này sẽ xuất ra trên trình duyệt như bên dưới.
 
-HTTP/1.1 200 OK
-Date: Thu, 29 Apr 2021 06:44:19 GMT
-Server: Apache/2.4.37 (centos)
-Permissions-Policy: geolocation=()
-Last-Modified: Thu, 29 Apr 2021 06:40:41 GMT
-ETag: "3-5c116c620a6f1"
-Accept-Ranges: bytes
-Content-Length: 3
-Keep-Alive: timeout=5, max=100
-Connection: Keep-Alive
-Content-Type: text/html; charset=UTF-8
+    HTTP/1.1 200 OK
+    Date: Thu, 29 Apr 2021 06:44:19 GMT
+    Server: Apache/2.4.37 (centos)
+    Permissions-Policy: geolocation=()
+    Last-Modified: Thu, 29 Apr 2021 06:40:41 GMT
+    ETag: "3-5c116c620a6f1"
+    Accept-Ranges: bytes
+    Content-Length: 3
+    Keep-Alive: timeout=5, max=100
+    Connection: Keep-Alive
+    Content-Type: text/html; charset=UTF-8
 Nginx
 Hãy lấy một ví dụ khác - tắt tính năng rung.
 
@@ -339,16 +421,16 @@ Hoặc tắt định vị địa lý, máy ảnh và loa.
 add_header Permissions-Policy "geolocation 'none'; camera 'none'; speaker 'none';";
 Đây là kết quả sau khi khởi động lại Nginx.
 
-HTTP/1.1 200 OK
-Server: nginx/1.14.1
-Date: Thu, 29 Apr 2021 06:48:35 GMT
-Content-Type: text/html
-Content-Length: 4057
-Last-Modified: Mon, 07 Oct 2019 21:16:24 GMT
-Connection: keep-alive
-ETag: "5d9bab28-fd9"
-Permissions-Policy: geolocation 'none'; camera 'none'; speaker 'none';
-Accept-Ranges: bytes
+    HTTP/1.1 200 OK
+    Server: nginx/1.14.1
+    Date: Thu, 29 Apr 2021 06:48:35 GMT
+    Content-Type: text/html
+    Content-Length: 4057
+    Last-Modified: Mon, 07 Oct 2019 21:16:24 GMT
+    Connection: keep-alive
+    ETag: "5d9bab28-fd9"
+    Permissions-Policy: geolocation 'none'; camera 'none'; speaker 'none';
+    Accept-Ranges: bytes
 Tất cả cấu hình Nginx đều bị httpchặn trong nginx.confhoặc bất kỳ tệp tùy chỉnh nào bạn sử dụng.
 
 Xóa dữ liệu trang web
@@ -360,17 +442,17 @@ Giả sử bạn muốn xóa bộ nhớ cache gốc, bạn có thể thêm vào 
 Header always set Clear-Site-Data "cache"
 Nó sẽ xuất ra phản hồi HTTP như bên dưới.
 
-HTTP/1.1 200 OK
-Date: Thu, 29 Apr 2021 07:52:14 GMT
-Server: Apache/2.4.37 (centos)
-Clear-Site-Data: cache
-Last-Modified: Thu, 29 Apr 2021 06:40:41 GMT
-ETag: "3-5c116c620a6f1"
-Accept-Ranges: bytes
-Content-Length: 3
-Keep-Alive: timeout=5, max=100
-Connection: Keep-Alive
-Content-Type: text/html; charset=UTF-8
+    HTTP/1.1 200 OK
+    Date: Thu, 29 Apr 2021 07:52:14 GMT
+    Server: Apache/2.4.37 (centos)
+    Clear-Site-Data: cache
+    Last-Modified: Thu, 29 Apr 2021 06:40:41 GMT
+    ETag: "3-5c116c620a6f1"
+    Accept-Ranges: bytes
+    Content-Length: 3
+    Keep-Alive: timeout=5, max=100
+    Connection: Keep-Alive
+    Content-Type: text/html; charset=UTF-8
 hoặc, để xóa mọi thứ.
 
 Header always set Clear-Site-Data "*"
@@ -380,26 +462,26 @@ Hãy đặt Nginx để xóa cookie.
 add_header Clear-Site-Data "cookies";
 Và, bạn sẽ thấy kết quả bên dưới.
 
-HTTP/1.1 200 OK
-Server: nginx/1.14.1
-Date: Thu, 29 Apr 2021 07:55:58 GMT
-Content-Type: text/html
-Content-Length: 4057
-Last-Modified: Mon, 07 Oct 2019 21:16:24 GMT
-Connection: keep-alive
-ETag: "5d9bab28-fd9"
-Clear-Site-Data: cookies
-Accept-Ranges: bytes
-Sự kết luận
-Bảo mật một trang web là một thách thức và tôi hy vọng bằng cách triển khai các tiêu đề trên, bạn thêm một lớp bảo mật. Nếu bạn đang điều hành một trang web kinh doanh, thì bạn cũng có thể cân nhắc sử dụng cloud-WAF như SUCURI để bảo vệ hoạt động kinh doanh trực tuyến của mình. Điều tốt về SUCURI là nó cung cấp cả bảo mật và hiệu suất.
+    HTTP/1.1 200 OK
+    Server: nginx/1.14.1
+    Date: Thu, 29 Apr 2021 07:55:58 GMT
+    Content-Type: text/html
+    Content-Length: 4057
+    Last-Modified: Mon, 07 Oct 2019 21:16:24 GMT
+    Connection: keep-alive
+    ETag: "5d9bab28-fd9"
+    Clear-Site-Data: cookies
+    Accept-Ranges: bytes
 
-Nếu bạn truy cập SUCURI WAF, bạn sẽ tìm thấy phần tiêu đề bổ sung trong tab Tường lửa >> Bảo mật.
+## Kết luận ##
 
-tiêu đề sucuri-secure-secure
+Bảo mật một trang web là một thách thức và tôi hy vọng bằng cách triển khai các header trên giúp bạn thêm một lớp bảo mật. Nếu bạn đang điều hành một trang web kinh doanh, thì bạn cũng có thể cân nhắc sử dụng cloud-WAF như SUCURI để bảo vệ hoạt động kinh doanh trực tuyến của mình. Điều tốt về SUCURI là nó cung cấp cả bảo mật và hiệu suất.
+
+Nếu bạn truy cập SUCURI WAF, bạn sẽ tìm thấy phần header bổ sung trong tab Firewall >>Security.
 
 <div class="imgcap">
 <div >
-    <img src="/assets/bao-mat-http-header/Hinh7.png" width = "800">
+    <img src="/assets/bao-mat-http-header/sucuri-secure-headers.png" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
