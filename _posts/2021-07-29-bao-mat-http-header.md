@@ -83,19 +83,6 @@ Nếu bạn đang sử dụng Cloudflare, thì bạn có thể bật HSTS chỉ 
 
 Chọn cài đặt bạn cần và các thay đổi sẽ được áp dụng nhanh chóng.
 
-### Microsoft IIS ###
-
-Mở IIS Manager và thêm header bằng cách đi tới “HTTP Response Headers” cho trang web tương ứng.
-
-<div class="imgcap">
-<div >
-    <img src="/assets/bao-mat-http-header/iis-hsts.png" width = "800">
-</div>
-<div class="thecap"></div>
-</div>
-
-Khởi động lại trang web
-
 ## 2. X-Frame-Options ##
 
 Sử dụng header X-Frame-Options để ngăn chặn lỗ hổng **Clickjacking** trên trang web của bạn. Bằng cách triển khai header này, bạn hướng dẫn trình duyệt không nhúng trang web của bạn vào frame/iframe. Điều này có một số hạn chế trong trình duyệt hỗ trợ, vì vậy bạn phải kiểm tra trước khi triển khai nó.
@@ -147,19 +134,6 @@ Bạn cũng có thể triển khai header này thông qua WordPress. Thêm phầ
 
 Nếu bạn không thoải mái khi chỉnh sửa tệp, thì bạn có thể sử dụng một plugin như được [giải thích ở đây](https://geekflare.com/wordpress-x-frame-options-httponly-cookie/) hoặc đã đề cập [ở đây](https://wordpress.org/plugins/http-headers/).
 
-### Microsoft IIS ###
-
-- Thêm header bằng cách đi tới “HTTP Response Headers” cho trang web tương ứng.
-
-<div class="imgcap">
-<div >
-    <img src="/assets/bao-mat-http-header/iis-x-frame-options.png" width = "800">
-</div>
-<div class="thecap"></div>
-</div>
-
-- Khởi động lại trang web để xem kết quả.
-
 ## 3. X-Content-Type-Options ##
 
 Ngăn chặn các loại rủi ro bảo mật MIME bằng cách thêm header này vào phản hồi HTTP của trang web của bạn. Việc có header này hướng dẫn trình duyệt xem xét các loại tệp như được xác định và không cho phép dò tìm nội dung. Chỉ có một tham số bạn phải thêm "nosniff".
@@ -180,21 +154,7 @@ Ngăn chặn các loại rủi ro bảo mật MIME bằng cách thêm header nà
 
 - Như thường lệ, bạn phải khởi động lại Nginx để kiểm tra kết quả.
 
-### Microsoft IIS ###
-
-- Mở IIS và chuyển đến HTTP Response Headers
-- Nhấp vào Add và nhập vào Name và Value
-
-<div class="imgcap">
-<div >
-    <img src="/assets/bao-mat-http-header/iis-mime-type.png" width = "800">
-</div>
-<div class="thecap"></div>
-</div>
-
-- Nhấp vào OK và khởi động lại IIS để xác minh kết quả.
-
-## Content Security Policy ##
+## 4. Content Security Policy ##
 
 Ngăn chặn các cuộc tấn công XSS, clickjacking, **code injection** bằng cách triển khai Content Security Policy (CSP) header trong phản hồi HTTP trang web của bạn. CSP hướng dẫn trình duyệt tải nội dung được phép tải trên trang web.
 
@@ -227,17 +187,6 @@ Ví dụ sau về tải mọi thứ từ cùng một nguồn gốc trong các m�
 - Thêm phần sau vào khối server trong tệp nginx.conf
 
     add_header Content-Security-Policy "default-src 'self';";
-
-### Microsoft IIS ###
-
-Đi tới HTTP Response Headers cho trang web tương ứng của bạn trong IIS Manager và thêm phần sau
-
-<div class="imgcap">
-<div >
-    <img src="/assets/bao-mat-http-header/iis-csp.png" width = "800">
-</div>
-<div class="thecap"></div>
-</div>
 
 Kiểm tra điều này để triển khai [frame-ancestors](https://geekflare.com/csp-frame-ancestors-configuration/) bằng CSP. Đây là phiên bản nâng cao của X-Frame-Options.
 
@@ -292,17 +241,20 @@ Và kết quả.
 
 Tìm cách kiểm soát chính sách liên kết giới thiệu của trang web của bạn? Có một số lợi ích về quyền riêng tư và bảo mật. Tuy nhiên, không phải tất cả các tùy chọn đều được tất cả các trình duyệt hỗ trợ, vì vậy hãy xem xét các yêu cầu của bạn trước khi triển khai.
 
-Liên kết giới thiệu-Chính sách hỗ trợ cú pháp sau.
+Referrer-Policy hỗ trợ cú pháp sau:
 
-Giá trị	Sự miêu tả
-không giới thiệu	Thông tin người giới thiệu sẽ không được gửi cùng với yêu cầu.
-không giới thiệu-khi-hạ cấp	Cài đặt mặc định trong đó liên kết giới thiệu được gửi đến cùng một giao thức như HTTP tới HTTP, HTTPS tới HTTPS.
-url không an toàn	URL đầy đủ sẽ được gửi cùng với yêu cầu.
-cùng nguồn gốc	Người giới thiệu sẽ chỉ được gửi cho cùng một trang web gốc.
-nguồn gốc nghiêm ngặt	chỉ gửi khi giao thức là HTTPS
-Nguồn gốc nghiêm ngặt-khi-xuất xứ chéo	URL đầy đủ sẽ được gửi qua một giao thức nghiêm ngặt như HTTPS
-gốc	gửi URL gốc trong tất cả các yêu cầu
-xuất xứ-khi-xuất xứ chéo	gửi URL ĐẦY ĐỦ trên cùng một nguồn gốc. Tuy nhiên, chỉ gửi URL gốc trong các trường hợp khác.
+|---------+---------|
+| Giá trị | Ý nghĩa |
+|:-------:|:--------|
+| no-referrer | Thông tin người giới thiệu sẽ không được gửi cùng với yêu cầu. |
+| no-referrer-when-downgrade | Cài đặt mặc định trong đó liên kết giới thiệu được gửi đến cùng một giao thức như HTTP tới HTTP, HTTPS tới HTTPS. |
+| unsafe-url | URL đầy đủ sẽ được gửi cùng với yêu cầu. |
+| same-origin | Người giới thiệu sẽ chỉ được gửi cho cùng một trang web gốc. |
+| strict-origin | chỉ gửi khi giao thức là HTTPS |
+| strict-origin-when-cross-origin | URL đầy đủ sẽ được gửi qua một giao thức nghiêm ngặt như HTTPS |
+| origin | gửi URL gốc trong tất cả các yêu cầu |
+| origin-when-cross-origin | gửi URL đầy đủ trên cùng một nguồn gốc. Tuy nhiên, chỉ gửi URL gốc trong các trường hợp khác. |
+
 Apache
 Bạn có thể thêm phần sau nếu bạn muốn đặt liên kết không giới thiệu.
 
