@@ -1,18 +1,16 @@
 ---
 layout: post
-title:  "Bảo mật HTTP Headers để ngăn chặn lỗ hổng"
-date:   2021-07-28 15:10:00
-permalink: 2021/07/28/bao-mat-http-header
-tags: Security HTTP Header
+title:  "Bảo mật HTTP Headers để ngăn chặn lỗ hổng Apache, Nginx"
+date:   2021-07-29 15:10:00
+permalink: 2021/07/29/bao-mat-http-header
+tags: Security HTTP Header Apache Nginx
 category: Security
 img: /assets/bao-mat-http-header/Hinh1.png
-summary: Bảo mật HTTP Headers để ngăn chặn lỗ hổng
+summary: Bảo mật HTTP Headers để ngăn chặn lỗ hổng Apache, Nginx
 
 ---
 
-```
-Bạn có biết hầu hết các lỗ hổng bảo mật có thể được khắc phục bằng cách triển khai các tiêu đề cần thiết trong tiêu đề phản hồi không?
-```
+> Bạn có biết hầu hết các lỗ hổng bảo mật có thể được khắc phục bằng cách triển khai các tiêu đề cần thiết trong tiêu đề phản hồi không?
 
 Bảo mật cũng cần thiết như nội dung và SEO của trang web của bạn, và hàng nghìn trang web bị tấn công do lỗi cấu hình sai hoặc thiếu bảo vệ. Nếu bạn là chủ sở hữu trang web hoặc kỹ sư bảo mật và đang tìm cách bảo vệ trang web của mình khỏi các cuộc tấn công **Clickjacking**, **code injection**, **MIME**, **XSS**,... thì hướng dẫn này sẽ giúp bạn.
 
@@ -232,7 +230,7 @@ Và kết quả.
 
 <div class="imgcap">
 <div >
-    <img src="/assets/bao-mat-http-header/nginx-allow-cross.png" width = "800">
+    <img src="/assets/bao-mat-http-header/nginx-permitted-cross.png" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
@@ -255,11 +253,13 @@ Referrer-Policy hỗ trợ cú pháp sau:
 | origin | gửi URL gốc trong tất cả các yêu cầu |
 | origin-when-cross-origin | gửi URL đầy đủ trên cùng một nguồn gốc. Tuy nhiên, chỉ gửi URL gốc trong các trường hợp khác. |
 
-Apache
+### Apache ###
+
 Bạn có thể thêm phần sau nếu bạn muốn đặt liên kết không giới thiệu.
 
-Header set Referrer-Policy "no-referrer"
-Và sau khi khởi động lại, bạn sẽ có trong tiêu đề phản hồi.
+    Header set Referrer-Policy "no-referrer"
+
+Và sau khi khởi động lại, bạn sẽ có trong header phản hồi.
 
 <div class="imgcap">
 <div >
@@ -268,10 +268,12 @@ Và sau khi khởi động lại, bạn sẽ có trong tiêu đề phản hồi.
 <div class="thecap"></div>
 </div>
 
-Nginx
+### Nginx ###
+
 Giả sử bạn cần triển khai cùng một nguồn gốc, vì vậy bạn phải thêm phần sau.
 
-add_header Referrer-Policy same-origin;
+    add_header Referrer-Policy same-origin;
+
 Sau khi cấu hình, bạn sẽ có kết quả bên dưới.
 
 <div class="imgcap">
@@ -281,19 +283,25 @@ Sau khi cấu hình, bạn sẽ có kết quả bên dưới.
 <div class="thecap"></div>
 </div>
 
-Expect-CT
-Tiêu đề mới vẫn ở trạng thái thử nghiệm là hướng dẫn trình duyệt xác thực kết nối với máy chủ web về tính minh bạch của chứng chỉ (CT). Dự án này của Google nhằm khắc phục một số lỗi trong hệ thống chứng chỉ SSL / TLS .
+## 7. Expect-CT ##
 
-Ba biến sau có sẵn cho tiêu đề Expect-CT.
+Một header mới vẫn ở trạng thái thử nghiệm để hướng dẫn trình duyệt xác thực kết nối với máy chủ web về tính minh bạch của chứng chỉ (CT). Dự án này của Google nhằm khắc phục một số [lỗi trong hệ thống chứng chỉ SSL/TLS](https://geekflare.com/ssl-test-certificate/).
 
-Giá trị	Sự miêu tả
-tuổi tối đa	Tính bằng giây, trình duyệt sẽ lưu chính sách trong bộ nhớ cache trong bao lâu.
-thi hành	Một chỉ thị tùy chọn để thực thi chính sách.
-báo cáo-tiểu	Trình duyệt để gửi báo cáo đến URL được chỉ định khi không nhận được tính minh bạch của chứng chỉ hợp lệ.
-Apache
+Ba biến sau có sẵn cho header Expect-CT.
+
+|---------+---------|
+| Giá trị | Ý nghĩa |
+|:-------:|:--------|
+| max-age | Tính bằng giây, trình duyệt sẽ lưu chính sách trong bộ nhớ cache trong bao lâu. |
+| enforce | Một chỉ thị tùy chọn để thực thi chính sách. |
+| report-uri | Trình duyệt để gửi báo cáo đến URL được chỉ định khi không nhận được tính minh bạch của chứng chỉ hợp lệ. |
+
+### Apache ###
+
 Giả sử bạn muốn thực thi chính sách, báo cáo và bộ nhớ cache này trong 12 giờ thì bạn phải thêm những thứ sau.
 
-Header set Expect-CT 'enforce, max-age=43200, report-uri="https://somedomain.com/report"'
+    Header set Expect-CT 'enforce, max-age=43200, report-uri="https://somedomain.com/report"'
+
 Và đây là kết quả.
 
 <div class="imgcap">
@@ -303,10 +311,12 @@ Và đây là kết quả.
 <div class="thecap"></div>
 </div>
 
-Nginx
+### Nginx ###
+
 Nếu bạn muốn báo cáo và lưu vào bộ nhớ cache trong 1 giờ thì sao?
 
-add_header Expect-CT 'max-age=60, report-uri="https://mydomain.com/report"';
+    add_header Expect-CT 'max-age=60, report-uri="https://mydomain.com/report"';
+
 Đầu ra sẽ là.
 
 <div class="imgcap">
@@ -316,20 +326,24 @@ add_header Expect-CT 'max-age=60, report-uri="https://mydomain.com/report"';
 <div class="thecap"></div>
 </div>
 
-Quyền-Chính sách
-Trước đó được gọi là Chính sách tính năng, nó được đổi tên thành Chính sách quyền với các tính năng nâng cao. Bạn có thể xem phần này để hiểu những thay đổi lớn giữa Tính năng-Chính sách đối với Quyền-Chính sách.
+## 8. Permissions-Policy ##
 
-Với Chính sách quyền, bạn có thể kiểm soát các tính năng của trình duyệt như định vị địa lý, toàn màn hình, loa, USB, tự động phát, loa, micrô, thanh toán, trạng thái pin, v.v. để bật hoặc tắt trong ứng dụng web. Bằng cách triển khai chính sách này, bạn cho phép máy chủ của mình hướng dẫn ứng dụng khách (trình duyệt) tuân theo chức năng của ứng dụng web.
+Trước đó được gọi là Feature-Policy, nó được đổi tên thành Permissions-Policy với các tính năng nâng cao. Bạn có thể xem [phần này](https://github.com/w3c/webappsec-permissions-policy/blob/main/permissions-policy-explainer.md#appendix-big-changes-since-this-was-called-feature-policy) để hiểu những thay đổi lớn giữa Feature-Policy đối với Permissions-Policy.
 
-Apache
-Giả sử bạn cần phải tắt tính năng toàn màn hình và để làm như vậy, bạn có thể thêm tệp sau vào httpd.confhoặc apache2.conftệp tùy thuộc vào hương vị của máy chủ Apache HTTP mà bạn sử dụng.
+Với Permissions-Policy, bạn có thể kiểm soát các tính năng của trình duyệt như định vị địa lý, toàn màn hình, loa, USB, tự động phát, tai nghe, micrô, thanh toán, trạng thái pin, v.v. để bật hoặc tắt trong ứng dụng web. Bằng cách triển khai chính sách này, bạn cho phép máy chủ của mình hướng dẫn ứng dụng khách (trình duyệt) tuân theo chức năng của ứng dụng web.
 
-Header always set Permissions-Policy "fullscreen 'none' "
+### Apache ###
+
+Giả sử bạn cần phải tắt tính năng toàn màn hình và để làm như vậy, bạn có thể thêm tệp sau vào httpd.conf hoặc tệp apache2.conf tùy thuộc vào phiên bản của máy chủ Apache HTTP mà bạn sử dụng.
+
+    Header always set Permissions-Policy "fullscreen 'none' "
+
 Làm thế nào về việc thêm nhiều tính năng trong một dòng?
 
 Điều đó cũng có thể xảy ra!
 
-Header always set Permissions-Policy "fullscreen 'none'; microphone 'none'"
+    Header always set Permissions-Policy "fullscreen 'none'; microphone 'none'"
+
 Khởi động lại Apache HTTP để xem kết quả.
 
     HTTP/1.1 200 OK
@@ -350,7 +364,8 @@ Bạn cũng có thể tắt hoàn toàn tính năng này bằng cách để tr�
 
 Ví dụ: bạn có thể thêm phần sau để tắt tính năng định vị.
 
-Header always set Permissions-Policy "geolocation=()"
+    Header always set Permissions-Policy "geolocation=()"
+
 Điều này sẽ xuất ra trên trình duyệt như bên dưới.
 
     HTTP/1.1 200 OK
@@ -364,13 +379,17 @@ Header always set Permissions-Policy "geolocation=()"
     Keep-Alive: timeout=5, max=100
     Connection: Keep-Alive
     Content-Type: text/html; charset=UTF-8
-Nginx
+
+### Nginx ###
+
 Hãy lấy một ví dụ khác - tắt tính năng rung.
 
-add_header Permissions-Policy "vibrate 'none';";
+    Header always set Permissions-Policy "geolocation=()"
+
 Hoặc tắt định vị địa lý, máy ảnh và loa.
 
-add_header Permissions-Policy "geolocation 'none'; camera 'none'; speaker 'none';";
+    add_header Permissions-Policy "geolocation 'none'; camera 'none'; speaker 'none';";
+
 Đây là kết quả sau khi khởi động lại Nginx.
 
     HTTP/1.1 200 OK
@@ -383,15 +402,19 @@ add_header Permissions-Policy "geolocation 'none'; camera 'none'; speaker 'none'
     ETag: "5d9bab28-fd9"
     Permissions-Policy: geolocation 'none'; camera 'none'; speaker 'none';
     Accept-Ranges: bytes
-Tất cả cấu hình Nginx đều bị httpchặn trong nginx.confhoặc bất kỳ tệp tùy chỉnh nào bạn sử dụng.
 
-Xóa dữ liệu trang web
-Như bạn có thể đoán bằng tên, việc triển khai tiêu đề Xóa trang web-dữ liệu là một cách tuyệt vời để yêu cầu khách hàng xóa dữ liệu duyệt web như bộ nhớ cache, bộ nhớ, cookie hoặc mọi thứ. Điều này cho phép bạn kiểm soát nhiều hơn cách bạn muốn lưu trữ dữ liệu của trang web trong trình duyệt.
+Tất cả cấu hình Nginx đều bị http chặn trong nginx.conf hoặc bất kỳ tệp tùy chỉnh nào bạn sử dụng.
 
-Apache
+## 9. Xóa dữ liệu trang web ##
+
+Như bạn có thể đoán bằng tên, việc triển khai header Xóa dữ liệu trang web là một cách tuyệt vời để yêu cầu khách hàng xóa dữ liệu duyệt web như bộ nhớ cache, bộ nhớ, cookie hoặc mọi thứ. Điều này cho phép bạn kiểm soát nhiều hơn cách bạn muốn lưu trữ dữ liệu của trang web trong trình duyệt.
+
+## Apache ##
+
 Giả sử bạn muốn xóa bộ nhớ cache gốc, bạn có thể thêm vào bên dưới.
 
-Header always set Clear-Site-Data "cache"
+    Header always set Clear-Site-Data "cache"
+
 Nó sẽ xuất ra phản hồi HTTP như bên dưới.
 
     HTTP/1.1 200 OK
@@ -405,13 +428,17 @@ Nó sẽ xuất ra phản hồi HTTP như bên dưới.
     Keep-Alive: timeout=5, max=100
     Connection: Keep-Alive
     Content-Type: text/html; charset=UTF-8
+
 hoặc, để xóa mọi thứ.
 
-Header always set Clear-Site-Data "*"
-Nginx
+    Header always set Clear-Site-Data "*"
+
+### Nginx ###
+
 Hãy đặt Nginx để xóa cookie.
 
-add_header Clear-Site-Data "cookies";
+    add_header Clear-Site-Data "cookies";
+
 Và, bạn sẽ thấy kết quả bên dưới.
 
     HTTP/1.1 200 OK
@@ -427,9 +454,9 @@ Và, bạn sẽ thấy kết quả bên dưới.
 
 ## Kết luận ##
 
-Bảo mật một trang web là một thách thức và tôi hy vọng bằng cách triển khai các header trên giúp bạn thêm một lớp bảo mật. Nếu bạn đang điều hành một trang web kinh doanh, thì bạn cũng có thể cân nhắc sử dụng cloud-WAF như SUCURI để bảo vệ hoạt động kinh doanh trực tuyến của mình. Điều tốt về SUCURI là nó cung cấp cả bảo mật và hiệu suất.
+Bảo mật một trang web là một thách thức và tôi hy vọng bằng cách triển khai các header trên giúp bạn thêm một lớp bảo mật. Nếu bạn đang điều hành một trang web kinh doanh, thì bạn cũng có thể cân nhắc sử dụng cloud-WAF như [SUCURI](https://www.anrdoezrs.net/links/8092889/type/dlg/https://sucuri.net/website-firewall/) để bảo vệ hoạt động kinh doanh trực tuyến của mình. Điều tốt về SUCURI là nó cung cấp cả bảo mật và hiệu suất.
 
-Nếu bạn truy cập SUCURI WAF, bạn sẽ tìm thấy phần header bổ sung trong tab Firewall >>Security.
+Nếu bạn truy cập SUCURI WAF, bạn sẽ tìm thấy phần header bổ sung trong tab Firewall >> Security.
 
 <div class="imgcap">
 <div >

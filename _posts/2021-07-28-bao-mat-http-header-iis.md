@@ -3,7 +3,7 @@ layout: post
 title:  "IIS - Bảo mật HTTP Headers để ngăn chặn lỗ hổng"
 date:   2021-07-28 15:10:00
 permalink: 2021/07/28/bao-mat-http-header-iis
-tags: Security HTTP Header
+tags: Security HTTP Header IIS
 category: Security
 img: /assets/bao-mat-http-header/Hinh1.png
 summary: Bảo mật HTTP Headers để ngăn chặn lỗ hổng
@@ -125,7 +125,7 @@ Ngăn chặn các loại rủi ro bảo mật MIME bằng cách thêm header nà
 
 <div class="imgcap">
 <div >
-    <img src="/assets/bao-mat-http-header/iis-mime-type.png" width = "800">
+    <img src="/assets/bao-mat-http-header/iis-mime-types.png" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
@@ -149,6 +149,15 @@ Ngăn chặn các loại rủi ro bảo mật MIME bằng cách thêm header nà
 
 Ngăn chặn các cuộc tấn công XSS, clickjacking, **code injection** bằng cách triển khai Content Security Policy (CSP) header trong phản hồi HTTP trang web của bạn. CSP hướng dẫn trình duyệt tải nội dung được phép tải trên trang web.
 
+Điều này sử dụng phương pháp danh sách trắng cho trình duyệt biết nơi tìm nạp hình ảnh, scripts, CSS, v.v.
+
+<div class="imgcap">
+<div >
+    <img src="/assets/bao-mat-http-header/blog_diagram.png" width = "800">
+</div>
+<div class="thecap"></div>
+</div>
+
 Tất cả các trình duyệt không hỗ trợ CSP, vì vậy bạn phải xác minh trước khi triển khai nó. Có ba cách để bạn có thể đạt được tiêu đề CSP.
 
 - Content-Security-Policy – Mức 2/1.0
@@ -164,7 +173,23 @@ Có thể có nhiều tham số để triển khai CSP và bạn có thể tham 
 |:----------------:|:---------|
 | default-src | Tải mọi thứ từ một nguồn đã xác định |
 | script-src | Chỉ tải các tập lệnh từ một nguồn đã xác định |
+| img-src | Chỉ định nguồn mà hình ảnh có thể được truy xuất. |
+| media-src | xác định các vị trí mà từ đó đa phương tiện như video có thể được truy xuất. |
+| object-src | để xác định các vị trí mà từ đó các plugin có thể được truy xuất. |
+| font-src | Chỉ định các nguồn được phép tải phông chữ. |
 
+Ví dụ:
+
+    Content-Security-Policy: default-src 'self'; media-src beagle.com beaglesecurity.com; script-src beagle.com; img-src *;
+
+Điều này được trình duyệt hiểu là:
+
+- default-src 'self'; - tải mọi thứ từ miền hiện tại
+- media-src beagle.com beaglesecurity.com; - chỉ tải đa phương tiện từ beagle.com và beaglesecurity.com
+- script-src beagle.com; - chỉ tải tập lệnh từ beagle.com
+- img-src \*; - tải hình ảnh từ mọi nơi
+
+Triển khai trên máy chủ:
 Ví dụ sau về tải mọi thứ từ cùng một nguồn gốc trong các máy chủ web khác nhau.
 
 - Đi tới HTTP Response Headers cho trang web tương ứng của bạn trong IIS Manager và thêm phần sau
@@ -422,7 +447,7 @@ Nó tiết lộ phiên bản cụ thể của Asp.NET mà bạn đang chạy, v�
 
 Sau khi bạn đã lưu các thay đổi, hãy khởi động lại trang web của bạn để chúng có hiệu lực.
 
-## Kiểm tra ##
+## 9. Kiểm tra ##
 
 Sử dụng các công cụ ở đầu bài viết này, kết quả kiểm tra lại các header trên như sau:
 
@@ -433,9 +458,9 @@ Sử dụng các công cụ ở đầu bài viết này, kết quả kiểm tra 
 <div class="thecap"></div>
 </div>
 
-## Kết luận ##
+## 10. Kết luận ##
 
-Bảo mật một trang web là một thách thức và tôi hy vọng bằng cách triển khai các header trên giúp bạn thêm một lớp bảo mật. Nếu bạn đang điều hành một trang web kinh doanh, thì bạn cũng có thể cân nhắc sử dụng cloud-WAF như SUCURI để bảo vệ hoạt động kinh doanh trực tuyến của mình. Điều tốt về SUCURI là nó cung cấp cả bảo mật và hiệu suất.
+Bảo mật một trang web là một thách thức và tôi hy vọng bằng cách triển khai các header trên giúp bạn thêm một lớp bảo mật. Nếu bạn đang điều hành một trang web kinh doanh, thì bạn cũng có thể cân nhắc sử dụng cloud-WAF như [SUCURI](https://www.anrdoezrs.net/links/8092889/type/dlg/https://sucuri.net/website-firewall/) để bảo vệ hoạt động kinh doanh trực tuyến của mình. Điều tốt về SUCURI là nó cung cấp cả bảo mật và hiệu suất.
 
 Nếu bạn truy cập SUCURI WAF, bạn sẽ tìm thấy phần header bổ sung trong tab Firewall >>Security.
 
