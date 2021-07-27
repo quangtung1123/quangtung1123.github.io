@@ -2,7 +2,7 @@
 layout: post
 title:  "IIS - Bảo mật HTTP Headers để ngăn chặn lỗ hổng"
 date:   2021-07-28 15:10:00
-permalink: 2021/07/28/bao-mat-http-header
+permalink: 2021/07/28/bao-mat-http-header-iis
 tags: Security HTTP Header
 category: Security
 img: /assets/bao-mat-http-header/Hinh1.png
