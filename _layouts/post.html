@@ -24,9 +24,14 @@ type: article
 
 </div>
 
-<button onclick="topFunction()" id="myBtn" title="Go to top">Top2</button>
+<div id='scroll-to-top'>
+    <span class='fa-stack fa-lg'>
+        <i class='fa fa-circle fa-stack-2x'></i>
+        <i class='fa fa-angle-double-up fa-stack-1x fa-inverse up-arrow'></i>
+    </span>
+</div>
 
 <script>
   {%- include scripts/article.js -%}
-  {%- include scripts/btnTop.js -%}
+  {%- include scripts/scroll-to-top.js -%}
 </script>
