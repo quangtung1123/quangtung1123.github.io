@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "Windows Server 101: Hardening IIS via Security Control Configuration"
+title:  "Windows Server 101 Hardening IIS via Security Control Configuration"
 date:   2021-07-30 15:10:00
 permalink: 2021/07/30/windows-server-101-hardening-iis-via-security-control
 tags: Security IIS Windows_server
 category: Security
 img: /assets/windows-server-101-hardening-iis-via-security-control/Hinh1.png
-summary: "Windows Server 101: Hardening IIS via Security Control Configuration"
+summary: "Windows Server 101 Hardening IIS via Security Control Configuration"
 
 ---
 
