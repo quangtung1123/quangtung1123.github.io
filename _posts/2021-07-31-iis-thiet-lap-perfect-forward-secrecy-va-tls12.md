@@ -3,7 +3,7 @@ layout: post
 title:  "IIS - Thiết lập SSL Perfect Forward Secrecy và TLS 1.2"
 date:   2021-07-31 15:10:00
 permalink: 2021/07/31/iis-thiet-lap-perfect-forward-secrecy-va-tls12
-tags: Security IIS TLS "Forward Secrecy"
+tags: Security IIS TLS [Forward Secrecy]
 category: Security
 img: /assets/iis-thiet-lap-perfect-forward-secrecy-va-tls12/Hinh1.png
 summary: Thiết lập SSL Perfect Forward Secrecy và TLS 1.2 cho IIS
