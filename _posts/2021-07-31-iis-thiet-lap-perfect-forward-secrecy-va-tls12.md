@@ -22,7 +22,7 @@ Trong mật mã, bảo mật chuyển tiếp (FS), hay còn được gọi là b
 
 ## Kích hoạt Forward Secrecy cho IIS Windows ##
 
-Để đơn giản hóa và thực thi nhanh chóng các thiết lập này, có 1 file PowerShell script giúp bạn làm toàn bộ với chỉ 1 click chuột.
+Để đơn giản hóa và thực thi nhanh chóng các thiết lập này, có 1 file PowerShell script giúp bạn làm toàn bộ với chỉ 1 click chuột. Script này hoạt động tốt với Microsoft Internet Information Server 7.5/8.0/8.5/10 (IIS) trên Windows 2008R2/2012/2012R2/2016/2019.
 
 File script kích hoạt và vô hiệu hóa những điều sau:
 - Disable Multi-Protocol Unified Hello
@@ -360,7 +360,7 @@ powershell -ExecutionPolicy ByPass -File script_pfs.ps1
 
 - Khởi động lại máy chủ để các thay đổi được áp dụng;
 
-- Xác minh rằng máy chủ của mình cung cấp các kết nối SSL an toàn hơn nhiều chưa bằng công cụ SLLLab](https://www.ssllabs.com/ssltest/). Bạn sẽ nhận được một Tóm tắt như thế này:
+- Xác minh rằng máy chủ của mình cung cấp các kết nối SSL an toàn hơn nhiều chưa bằng công cụ [SLLLab](https://www.ssllabs.com/ssltest/). Bạn sẽ nhận được một Tóm tắt như thế này:
 
 <div class="imgcap">
 <div >

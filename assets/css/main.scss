@@ -215,3 +215,22 @@ pre.code {
     z-index: 1;
 }
 /* Progress Bar CSS End */
+
+/* AK custom CSS mods */
+.thecap{
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 25px;
+  }
+
+.imgright { float: right; margin-left: 10px; }
+.imgcap img {
+  border: 0px solid #999;
+  max-width: 100%;
+}
+.imgcap {
+  color: #555;
+  font-size: 14px;
+  text-align: center;
+}
+
