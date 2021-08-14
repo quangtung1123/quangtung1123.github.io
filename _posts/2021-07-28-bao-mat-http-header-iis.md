@@ -308,7 +308,30 @@ phần mềm được máy chủ gốc sử dụng để xử lý yêu cầu. Vi
 <div class="thecap"></div>
 </div>
 
-Đối với IIS, để loại bỏ header này có vẻ hơi dài dòng. Điều đầu tiên bạn cần là module [URL-Rewrite](http://www.iis.net/downloads/microsoft/url-rewrite). Sau khi cài đặt, hãy đi tới IIS Manager và chọn trang web của bạn, sau đó chọn tiếp URL Rewrite.
+Đối với IIS 10+, để loại bỏ header này bằng cách thêm các dòng sau vào file web.config:
+
+```config
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <security>
+            <requestFiltering removeServerHeader="true" />
+        </security>
+    </system.webServer>
+</configuration>
+```
+
+Hoặc vào IIS Manager’s Configuration Editor, chọn removeServerHeader thành True trong IIS Configuration Manager requestFiltering node:
+
+<div class="imgcap">
+<div >
+    <img src="/assets/bao-mat-http-header/IIS_RequestFiltering_01.png" width = "800">
+</div>
+<div class="thecap"></div>
+</div>
+
+
+Đối với IIS bản cũ hơn 10, để loại bỏ header này có vẻ hơi dài dòng. Điều đầu tiên bạn cần là module [URL-Rewrite](http://www.iis.net/downloads/microsoft/url-rewrite). Sau khi cài đặt, hãy đi tới IIS Manager và chọn trang web của bạn, sau đó chọn tiếp URL Rewrite.
 
 <div class="imgcap">
 <div >
@@ -397,6 +420,19 @@ Nếu muốn, bạn có thể chỉnh sửa rule và cuộn xuống sâu hơn đ
 <div class="thecap"></div>
 </div>
 
+Nếu không muốn sửa bằng giao diện thì bạn có thể sửa đổi trong file web.config như sau:
+
+```config
+<rewrite>    
+  <outboundRules rewriteBeforeCache="true">
+    <rule name="Remove Server header">
+      <match serverVariable="RESPONSE_Server" pattern=".+" />
+      <action type="Rewrite" value="" />
+    </rule>
+  </outboundRules>
+</rewrite>
+```
+
 ### X-Powered-By ###
 
 Header X-Powered-By cung cấp thông tin về công nghệ hỗ trợ máy chủ Web.
@@ -418,6 +454,18 @@ Nếu header X-Powered-By xuất hiện ở đây, bạn có thể chỉ cần s
 </div>
 <div class="thecap"></div>
 </div>
+
+Nếu không muốn sửa bằng giao diện thì bạn có thể sửa đổi trong file web.config như sau:
+
+```config
+<system.webServer>
+  <httpProtocol>
+    <customHeaders>
+      <remove name="X-Powered-By" />
+    </customHeaders>
+  </httpProtocol>
+</system.webServer>
+```
 
 Phương pháp thứ hai, giống như Server header, là sử dụng mô-đun URL-Rewrite để xóa hoặc thay đổi giá trị. Thực hiện theo các bước tương tự đối với Server header, nhưng thay thế tên của server variable và các chi tiết khi tạo rule.
 
@@ -476,5 +524,6 @@ Nếu bạn truy cập SUCURI WAF, bạn sẽ tìm thấy phần header bổ sun
 - [geekflare](https://geekflare.com/http-header-implementation/)
 - [ryadel](https://www.ryadel.com/en/iis-web-config-secure-http-response-headers-pass-securityheaders-io-scan/)
 - [scotthelme](https://scotthelme.co.uk/hardening-your-http-response-headers/)
+- [saotn](https://www.saotn.org/remove-iis-server-version-http-response-header/)
 
 ---
