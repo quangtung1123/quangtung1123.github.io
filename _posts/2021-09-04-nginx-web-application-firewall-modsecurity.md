@@ -49,7 +49,7 @@ Giải pháp cho Web Applications Security:
  - Đảm bảo toàn vẹn dữ liệu
  - Permission: Phân quyền truy cập tài nguyên phù hợp
  - Giả lập đường dẫn web, giấu file cấu hình, tạo bẫy (honeyport hay port ảo), lợi dụng mod_rewirte, ...
- - Sử dụng `*#Web Applications Firewall*`
+ - Sử dụng **Web Applications Firewall**
 
 Tính năng của Web Applications Firewall:
 
