@@ -19,7 +19,7 @@ summary: Cài đặt WAF ModSecurity với Nginx
 <div class="thecap"></div>
 </div>
 
-- Bên trên chính là một mô hình nền tảng web phổ biến hiện nay. Với mô hình này, website có thể bị tấn công qua các hình thức:
+Bên trên chính là một mô hình nền tảng web phổ biến hiện nay. Với mô hình này, website có thể bị tấn công qua các hình thức:
  - Thông qua Authencation (Tấn công mật khẩu, giao thức mã hóa, tấn công xác thực)
  - Thông qua Session, Transport (Các hình thức tấn công bảo mật thông qua đường truyền, bao gồm cả MITM)
  - Thông qua lỗ hổng Web Applications
@@ -31,7 +31,7 @@ summary: Cài đặt WAF ModSecurity với Nginx
  - Thông qua tấn công vật lý
  - Thông qua tâm lý con người.
 
-- Với 10 quy chuẩn bảo mật và cũng là 10 phân nhánh lỗ hổng bảo mật ứng dụng web theo OWASP:
+Với 10 quy chuẩn bảo mật và cũng là 10 phân nhánh lỗ hổng bảo mật ứng dụng web theo OWASP:
  - Injection (SQLi, LDPAi, OSCi, ...)
  - Cross Site Scripting (XSS)
  - Broken Authencation and Session Management
@@ -43,7 +43,7 @@ summary: Cài đặt WAF ModSecurity với Nginx
  - Insufficient Transport Layer Protection
  - Unvalidciated Redirect and Foreards
 
-- Giải pháp cho Web Applications Security:
+Giải pháp cho Web Applications Security:
  - An toàn source code: Fix lỗ hổng trong source code
  - Authencation: Áp dụng các hình thức mã hóa, chứng thực phù hợp.
  - Đảm bảo toàn vẹn dữ liệu
@@ -51,7 +51,7 @@ summary: Cài đặt WAF ModSecurity với Nginx
  - Giả lập đường dẫn web, giấu file cấu hình, tạo bẫy (honeyport hay port ảo), lợi dụng mod_rewirte, ...
  - Sử dụng `*#Web Applications Firewall*`
 
-- Tính năng của Web Applications Firewall:
+Tính năng của Web Applications Firewall:
 
 <div class="imgcap">
 <div >
@@ -73,7 +73,7 @@ summary: Cài đặt WAF ModSecurity với Nginx
 
 ## Các phần mềm mã nguồn mở cung cấp WAF ##
 
-- [ModSecurity (Trustwave SpiderLabs)](http://www.modsecurity.org/)
+- [ModSecurity (Trustwave SpiderLabs)](https://www.github.com/SpiderLabs/ModSecurity)
 - [Shadow Daemon](https://shadowd.zecure.org/)
 - [AQTRONIX WebKnight](http://www.aqtronix.com/?PageID=99)
 - [ESAPI WAF](https://www.owasp.org/index.php/The_ESAPI_Web_Application_Firewall_%28ESAPI_WAF%29)
@@ -90,8 +90,8 @@ summary: Cài đặt WAF ModSecurity với Nginx
 Trong nội dung bài viết này, mình sẽ sử dụng môi trường như sau:
 
 - OS triển khai: Centos 7
-- Opensource WAF: [ModSecurity (Trustwave SpiderLabs)](http://www.modsecurity.org/) phiên bản 2.9.1 được download tại [GitHub - SpiderLabs](https://github.com/SpiderLabs/ModSecurity/tree/nginx_refactoring)
-- Web Services: Nginx phiên bản 1.12.0 được download tại [Nginx - Downloads](http://nginx.org/download/nginx-1.12.0.tar.gz)
+- Opensource WAF: [ModSecurity (Trustwave SpiderLabs)](http://www.modsecurity.org/) được download tại [GitHub - SpiderLabs](https://github.com/SpiderLabs/ModSecurity/tree/nginx_refactoring)
+- Web Services: Nginx được download tại [Nginx - Downloads](https://nginx.org/en/download.html)
 - Mô hình triển khai:
 
 <div class="imgcap">
@@ -101,24 +101,25 @@ Trong nội dung bài viết này, mình sẽ sử dụng môi trường như sa
 <div class="thecap"></div>
 </div>
 
-- Lí do triển khai WAF ngay trên Reverse Proxy:
+Lí do triển khai WAF ngay trên Reverse Proxy:
  - Để đảm bảo an toàn cho Web Server bên trong khi các cuộc tấn công nặng nề.
  - Giảm thiểu tài nguyên tiêu tốn cho Web Server vì các WAF cần một lượng tài nguyên không nhỏ.
  - WAF cũng có thể kiểm soát được tài nguyên tĩnh được Caching trên Reverse Proxy
 
-- Giới thiệu về ModSecurity:
+Giới thiệu về ModSecurity:
  - Là một WAF
  - Được xem như là một module phát triển cho nginx hoặc apache
  - Opensource có thể mở rộng và miễn phí sử dụng.
  - Hoạt động trên layer 7 của mô hình OSI, ghi log và kiểm soát hoạt động theo các rules.
  - Kiểm soát các request và response trong cả header và body, nếu phát hiện các dấu hiệu tấn công theo rules. ModSecurity sẽ thực hiện hoạt động đã được định sẵn theo từng rules và ghi lại logs các hành động đó.
 
-- Tiến hành cài đặt
+**Tiến hành cài đặt**
 
  - Cài đặt các package yêu cầu cho việc compiling:
 
 ```
-yum install -y gcc gcc-c++make automake autoconf libtool pcre pcre-devel \
+yum -y update
+yum install -y gcc gcc-c++ make automake autoconf libtool pcre pcre-devel \
 libxml2 libxml2-devel curl curl-devel httpd-devel wget git openssl-devel \
 zlib-devel geoip-devel epel-release
 ```
@@ -136,14 +137,14 @@ sed -i '1 i\AUTOMAKE_OPTIONS = subdir-objects' Makefile.am
 make && make install
 ```
 
- - Thực hiện download và giải nén source code của nginx:
+ - Thực hiện download và giải nén source code của nginx phiên bản mới nhât [tại đây](http://nginx.org/en/download.html):
 
 ```
 cd /opt
 mkdir downloads && cd $_
-wget http://nginx.org/download/nginx-1.12.0.tar.gz
-tar -zxf nginx-1.12.0.tar.gz
-cd nginx-1.12.0
+wget http://nginx.org/download/nginx-1.21.2.tar.gz
+tar -zxf nginx-*.tar.gz
+cd nginx-*
 ```
 
  - Compiling nginx cùng với ModSecurity trong quá trình cài đặt:
@@ -183,7 +184,7 @@ make
 make install
 ```
 
-- Để hoàn tất quá trình cài đặt, bạn cần phải tiếp tục làm theo các bước dưới đây:
+Để hoàn tất quá trình cài đặt, bạn cần phải tiếp tục làm theo các bước dưới đây:
 
  - Bước 1: Chạy các câu lệnh sau:
 
@@ -320,7 +321,7 @@ nếu thấy dòng chữ sau thì coi như đã cài đặt ModSecurity cho ngin
 ModSecurity: StatusEngine call successfully sent. For more information visit: http://status.modsecurity.org/
 ```
 
-- Kiểm tra cấu hình rules mặc định:
+**Kiểm tra cấu hình rules mặc định:**
 
  - Mở port 80 và cho phép truy cập ra bên ngoài:
 
