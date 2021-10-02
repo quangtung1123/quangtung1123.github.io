@@ -22,3 +22,9 @@ header:
       en      : &EN       Donate
       # @end locale config
     url: /donate
+
+  - titles:
+      # @start locale config
+      en      : &EN       Advanced Search
+      # @end locale config
+    url: /search
