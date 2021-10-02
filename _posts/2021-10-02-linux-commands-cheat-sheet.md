@@ -110,6 +110,8 @@ summary: Các lệnh trong linux
 | fg | Để chạy một process đã dừng ở phía trước |
 | top | Thông tin chi tiết về tất cả các process đang hoạt động |
 | ps | Cung cấp trạng thái của các process đang chạy cho người dùng |
+| ps -ef | Hiển thị tất cả các tiến trình đang chạy trên hệ thống |
+| ps -ef \| grep processname | Hiển thị thông tin tiến trình theo tên |
 | ps PID | Cung cấp trạng thái của một process cụ thể |
 | pidof | Cung cấp process ID (PID) của một process |
 | kill PID | Kết thúc một process |
@@ -192,6 +194,30 @@ summary: Các lệnh trong linux
 | lsof -u user | Danh sách tệp do người dùng mở |
 | free -h | Hiển thị bộ nhớ trống và đã sử dụng (-h cho con người có thể đọc được, -m cho MB, -g cho GB.) |
 | watch df -h | Thực thi "df -h", hiển thị các bản cập nhật định kỳ |
+
+## Thao tác với tệp và thư mục ##
+
+|------------------+---------|
+| Lệnh | Ý nghĩa |
+|:----------------:|:---------|	
+| ls -al | Liệt kê tất cả các tệp ở định dạng danh sách dài (chi tiết) |
+| pwd | Hiển thị thư mục làm việc hiện tại |
+| mkdir directory | Tạo một thư mục |
+| rm file | Xóa tệp |
+| rm -r directory | Xóa thư mục và nội dung của nó |
+| rm -f file | Buộc xóa tệp mà không cần nhắc xác nhận |
+| rm -rf directory | Xoá mạnh thư mục mà không cần xác nhận |
+| cp file1 file2 | Sao chép tệp1 sang tệp2 |
+| cp -r source_directory destination | Sao chép source_directory tới destination. Nếu đích tồn tại, hãy sao chép source_directory vào đích, nếu không hãy tạo đích với nội dung của source_directory. |
+| mv file1 file2 | Đổi tên hoặc di chuyển file1 thành file2. Nếu file2 là một thư mục hiện có, hãy di chuyển file1 vào thư mục file2 |
+| ln -s /path/to/file linkname | Tạo liên kết tượng trưng cho tên liên kết |
+| touch file | Tạo tệp trống hoặc cập nhật thời gian truy cập và sửa đổi tệp. |
+| cat file | Xem nội dung của tệp |
+| less file | Duyệt qua tệp văn bản |
+| head file | Hiển thị 10 dòng đầu tiên của tệp |
+| tail file | Hiển thị 10 dòng cuối cùng của tệp |
+| tail -f file | Hiển thị 10 dòng cuối cùng của tệp và "theo dõi" tệp khi nó thay đổi. |
+
 
 **Tài liệu tham khảo**
 
