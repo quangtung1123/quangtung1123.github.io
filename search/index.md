@@ -9,11 +9,14 @@ category:
 
 ---
 
+<!DOCTYPE html>
+<html>
+<head>
 <script language="JavaScript" type="text/javascript" src="/search/lunr.min.js"></script>
 <script language="JavaScript" type="text/javascript" src="/search/search.js"></script>
-<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/mark.js/8.9.1/jquery.mark.min.js"></script> -->
 <script language="JavaScript" type="text/javascript" src="jquery.mark.min.js"></script>
-
+</head>
+<body>
 <div class="container">
     <form action="get" id="site_search">
         <div class="input-group">
@@ -25,6 +28,7 @@ category:
         <ul id="search_results"></ul>
     </form>
 </div>
+</body>
 
 <style type="text/css">
 #site_search {
@@ -54,5 +58,5 @@ mark, .mark{
     background-color: #FEFE65;
 }
 </style>
-
+</html>
 
