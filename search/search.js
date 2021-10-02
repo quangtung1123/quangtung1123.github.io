@@ -1,5 +1,4 @@
-<script type="text/javascript">
-    $(document).ready(function() {
+$(document).ready(function() {
 
   // Initialize lunr with the fields to be searched, plus the boost.
   window.idx = lunr(function () {
@@ -134,5 +133,4 @@
     });
   }
 });
-</script>
 

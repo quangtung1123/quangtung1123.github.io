@@ -6,11 +6,13 @@ permalink: /search/
 comments: false
 tags: 
 category: 
-sc_project: 
-sc_security: 
-
 
 ---
+
+<script language="JavaScript" type="text/javascript" src="/search/lunr.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="/search/search.js"></script>
+<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/mark.js/8.9.1/jquery.mark.min.js"></script> -->
+<script language="JavaScript" type="text/javascript" src="jquery.mark.min.js"></script>
 
 <div class="container">
     <form action="get" id="site_search">
@@ -23,11 +25,6 @@ sc_security:
         <ul id="search_results"></ul>
     </form>
 </div>
-
-<script language="JavaScript" type="text/javascript" src="/search/lunr.min.js"></script>
-<script language="JavaScript" type="text/javascript" src="/search/search.js"></script>
-<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/mark.js/8.9.1/jquery.mark.min.js"></script> -->
-<script language="JavaScript" type="text/javascript" src="jquery.mark.min.js"></script>
 
 <style type="text/css">
 #site_search {
