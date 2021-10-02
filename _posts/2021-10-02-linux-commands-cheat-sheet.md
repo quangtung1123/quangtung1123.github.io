@@ -70,16 +70,21 @@ summary: Các lệnh trong linux
 | unset | Xóa một biến |
 | export Variable=value | Để đặt giá trị của một biến môi trường |
 
-## Lệnh quản lý người dùng ##
+## Thông tin và quản lý người dùng ##
 
 |------------------+---------|
 | Lệnh | Ý nghĩa |
 |:----------------:|:---------|
+| id | Hiển thị id người dùng và id nhóm của người dùng hiện tại của bạn. |
+| who | Hiển thị những người dùng cuối cùng đã đăng nhập vào hệ thống. |
+| w | Hiển thị ai đang trực tuyến |
+| whoami | Bạn đăng nhập bằng tài khoản nào |
 | sudo adduser username | Để thêm người dùng mới |
 | sudo passwd -l 'username' | Để thay đổi mật khẩu của người dùng |
 | sudo userdel -r 'username' | Để xóa người dùng mới được tạo |
 | sudo usermod -a -G GROUPNAME USERNAME | Để thêm người dùng vào một nhóm |
 | sudo deluser USER GROUPNAME | Để xóa một người dùng khỏi một nhóm |
+| groupadd test | Tạo một nhóm có tên là "test" |
 | finger | Hiển thị thông tin của tất cả người dùng đã đăng nhập |
 | finger username | Cung cấp thông tin của một người dùng cụ thể |
 
@@ -139,8 +144,58 @@ summary: Các lệnh trong linux
 | S | Thay thế toàn bộ dòng và bắt đầu chèn vào đầu dòng |
 | ~ | Thay đổi trường hợp của từng ký tự |
 
+## Thông tin hệ thống ##
+
+|------------------+---------|
+| Lệnh | Ý nghĩa |
+|:----------------:|:---------|	
+| uname -a | Hiển thị thông tin hệ thống Linux |
+| uname -r | Hiển thị thông tin phát hành kernel |
+| cat /etc/redhat-release | Hiển thị phiên bản Red Hat đã được cài đặt |
+| uptime | Hiển thị thời gian hệ thống đã chạy + tải |
+| hostname | Hiển thị tên máy chủ hệ thống |
+| hostname -I | Hiển thị tất cả các địa chỉ IP cục bộ của máy chủ. |
+| last reboot | Hiển thị lịch sử khởi động lại hệ thống |
+| date | Hiển thị ngày và giờ hiện tại |
+| cal | Hiển thị lịch của tháng này |
+
+## Thông tin phần cứng ##
+
+|------------------+---------|
+| Lệnh | Ý nghĩa |
+|:----------------:|:---------|	
+| dmesg | Hiển thị thông báo trong bộ đệm vòng kernel |
+| cat /proc/cpuinfo | Hiển thị thông tin CPU |
+| cat /proc/meminfo | Hiển thị thông tin bộ nhớ |
+| free -h | Hiển thị bộ nhớ trống và đã sử dụng (-h cho con người có thể đọc được, -m cho MB, -g cho GB.) |
+| lspci -tv | Hiển thị thiết bị PCI |
+| lsusb -tv | Hiển thị thiết bị USB |
+| dmidecode | Hiển thị DMI / SMBIOS (thông tin phần cứng) từ BIOS |
+| hdparm -i /dev/sda | Hiển thị thông tin về đĩa sda |
+| hdparm -tT /dev/sda | Thực hiện kiểm tra tốc độ đọc trên đĩa sda |
+| hdparm -tT /dev/sda | Kiểm tra các khối không đọc được trên đĩa sda |
+
+## Theo dõi và thống kê hiệu suất ##
+
+|------------------+---------|
+| Lệnh | Ý nghĩa |
+|:----------------:|:---------|	
+| top | Hiển thị và quản lý các process hàng đầu |
+| htop | Trình xem process tương tác (thay thế hàng đầu) |
+| mpstat 1 | Hiển thị thống kê liên quan đến bộ xử lý |
+| vmstat 1 | Hiển thị thống kê bộ nhớ ảo |
+| iostat 1 | Hiển thị thống kê I/O |
+| tail -100 /var/log/messages | Hiển thị 100 thông báo nhật ký hệ thống gần đây nhất (Sử dụng /var/log/syslog cho hệ thống dựa trên Debian.) |
+| tcpdump -i eth0 | Chụp và hiển thị tất cả các gói trên giao diện eth0 |
+| tcpdump -i eth0 'port 80' | Giám sát tất cả lưu lượng trên cổng 80 (HTTP) |
+| lsof | Liệt kê tất cả các tệp đang mở trên hệ thống |
+| lsof -u user | Danh sách tệp do người dùng mở |
+| free -h | Hiển thị bộ nhớ trống và đã sử dụng (-h cho con người có thể đọc được, -m cho MB, -g cho GB.) |
+| watch df -h | Thực thi "df -h", hiển thị các bản cập nhật định kỳ |
+
 **Tài liệu tham khảo**
 
 - [guru99](https://www.guru99.com/linux-commands-cheat-sheet.html)
+- [linuxtrainingacademy](https://www.linuxtrainingacademy.com/linux-commands-cheat-sheet/)
 
 ---
