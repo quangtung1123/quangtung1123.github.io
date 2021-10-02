@@ -1,4 +1,3 @@
-var $ = jQuery;
 $(document).ready(function() {
 
   // Initialize lunr with the fields to be searched, plus the boost.
