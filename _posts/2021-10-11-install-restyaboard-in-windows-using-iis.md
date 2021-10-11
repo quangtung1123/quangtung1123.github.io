@@ -2,8 +2,8 @@
 layout: post
 title:  "Cài đặt Restyaboard trên Windows sử dụng IIS"
 permalink: 2021/10/11/install-restyaboard-in-windows-using-iis
-tags: Linux Command
-category: Linux
+tags: Restyaboard
+category: Restyaboard
 img: /assets/install-restyaboard-in-windows-using-iis/Hinh1.png
 summary: Cài đặt Restyaboard trên Windows sử dụng IIS
 
@@ -20,14 +20,11 @@ Restyaboard giống như một ghi chú dán điện tử để sắp xếp các
 ## Các bước để cài đặt
 
 Bạn cần phải tải và cài đặt các phần mềm phụ trợ sau:
-- Microsoft Web Platform Installer
-   > https://www.microsoft.com/web/downloads/platform.aspx
-- NodeJS / NPM
-  > https://nodejs.org
-- PostgreSQL 
-  > https://www.postgresql.org/download
+- [Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)
+- [NodeJS / NPM](https://nodejs.org)
+- [PostgreSQL](https://www.postgresql.org/download)
 
-Các bước bao gồm:
+Các bước cài đặt bao gồm:
 - Tải Restyaboard
 - Kiểm tra phân quyền thư mục IIS
 - Cài đặt các phần mềm phụ thuộc và biên dịch less/js (npm/grunt)
@@ -43,7 +40,7 @@ Nào chúng ta bắt đầu thực hiện cài đặt Restyaboard trên Windows 
 
 - Tạo thư mục mới để lưu trữ phần mềm Restyaboard trên hệ thống của bạn. Ví dụ:
 	```C:\inetpub\wwwroot\restyaboard```
-- Tải phiên bản mới nhất board-vX.X.X.zip tại   https://github.com/RestyaPlatform/board/releases
+- Tải phiên bản mới nhất board-vX.X.X.zip [tại đây](https://github.com/RestyaPlatform/board/releases)
 - Giải nén file ZIP vào thư mục tạo phía trên
 
 
@@ -75,25 +72,20 @@ Mở Command Prompt:
 
 #### PHP v5.6+
 - Tải xuống và cài đặt NodeJS nếu bạn chưa có
-- Sử dụng Web Platform Installer, hãy cài đặt những gói sau::
+- Sử dụng Web Platform Installer, hãy cài đặt những gói sau:
    - PHP 5.6.31
 - Nó sẽ tự động đề nghị cài đặt những thứ sau:
    - Windows Cache Extension 1.3 for PHP 5.3
    - Microsoft Drivers 3.2 for PHP v5.6 for SQL Server in IIS 
    
 #### PostgreSQL 10
-- Tải xuống và cài đặt PostgreSQL bằng trình cài đặt được EnterpriseDB chứng nhận:
-   - https://www.postgresql.org/download/windows/
+- Tải xuống và cài đặt PostgreSQL bằng trình cài đặt được EnterpriseDB chứng nhận [tại đây](https://www.postgresql.org/download/windows/).
 
 ## Kiểm tra các tiện ích mở rộng của PHP
 
-Restyaboard uses a couple of important PHP extensions for communicating with the PSQL database. Navigate to your PHP install (likely ``C:\Program Files (x86)\PHP\v5.6``) and edit your php.ini configuration file. You may need to open Notepad or another editor as Administrator.
-
-Towards the end of the file, ensure you have the bolded:
-
 Restyaboard sử dụng một vài phần mở rộng PHP quan trọng để giao tiếp với cơ sở dữ liệu PSQL. Di chuyển đến thư mục cài đặt PHP của bạn (có thể ``C:\Program Files (x86)\PHP\v5.6``) và chỉnh sửa tệp cấu hình php.ini của bạn. Bạn có thể cần mở Notepad hoặc một trình soạn thảo khác với tư cách Quản trị viên. Ở cuối tệp, hãy đảm bảo bạn có phần mở rộng  được in đậm dưới đây:
 
-> [ExtensionList]
+\[ExtensionList\]
 extension=php_mysql.dll
 extension=php_mysqli.dll
 extension=php_mbstring.dll
