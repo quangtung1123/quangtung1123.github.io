@@ -93,7 +93,7 @@ extension=php_mysqli.dll
 
 extension=php_mbstring.dll
 
-**extension=php_gd2.dll
+**extension=php_gd2.dll**
 
 **extension=php_ldap.dll**
 
