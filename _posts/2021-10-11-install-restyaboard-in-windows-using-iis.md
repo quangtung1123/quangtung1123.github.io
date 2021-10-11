@@ -86,22 +86,39 @@ Mở Command Prompt:
 Restyaboard sử dụng một vài phần mở rộng PHP quan trọng để giao tiếp với cơ sở dữ liệu PSQL. Di chuyển đến thư mục cài đặt PHP của bạn (có thể ``C:\Program Files (x86)\PHP\v5.6``) và chỉnh sửa tệp cấu hình php.ini của bạn. Bạn có thể cần mở Notepad hoặc một trình soạn thảo khác với tư cách Quản trị viên. Ở cuối tệp, hãy đảm bảo bạn có phần mở rộng  được in đậm dưới đây:
 
 \[ExtensionList\]
+
 extension=php_mysql.dll
+
 extension=php_mysqli.dll
+
 extension=php_mbstring.dll
+
 **extension=php_gd2.dll
-extension=php_ldap.dll**
+
+**extension=php_ldap.dll**
+
 extension=php_gettext.dll
+
 **extension=php_curl.dll**
+
 extension=php_exif.dll
+
 extension=php_xmlrpc.dll
+
 extension=php_openssl.dll
+
 extension=php_soap.dll
+
 extension=php_pdo_mysql.dll
+
 extension=php_pdo_sqlite.dll
+
 **extension=php_imap.dll**
+
 extension=php_tidy.dll
+
 **extension=php_pgsql.dll**
+
 **extension=php_pdo_pgsql.dll**
 
 ## Thiết lập Cơ sở dữ liệu Restyaboard
