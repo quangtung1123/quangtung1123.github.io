@@ -14,7 +14,7 @@ category:
 <head>
 <script language="JavaScript" type="text/javascript" src="/search/lunr.min.js"></script>
 <script language="JavaScript" type="text/javascript" src="/search/search.js"></script>
-<script language="JavaScript" type="text/javascript" src="jquery.mark.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="/search/jquery.mark.min.js"></script>
 </head>
 <body>
 <div class="container">
