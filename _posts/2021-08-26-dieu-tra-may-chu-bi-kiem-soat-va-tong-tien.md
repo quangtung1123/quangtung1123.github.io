@@ -116,7 +116,7 @@ Dựa vào các mốc thời gian đã thu thập ở trên thì chúng tôi ph�
 
 Sau một thời gian tìm kiếm thì chúng tôi phát hiện kẻ tấn công đã upload được webshell lên máy chủ web thông qua lỗ hổng của **Telerik Web UI**.
 
-**Telerik Web UI **ứng dụng web trên Framework ASP.NET rất phổ biến và được triển khai nhiều ở cơ quan chính phủ, doanh nghiệp.
+**Telerik Web UI** ứng dụng web trên Framework ASP.NET rất phổ biến và được triển khai nhiều ở cơ quan chính phủ, doanh nghiệp.
 
 Trên ứng dụng tồn tại 2 lỗ hổng nghiêm trọng cho phép kẻ tấn công tải xuống, upload tệp bất kỳ hoặc có thể thực thi mã từ xa trên máy chủ web, cụ thể đó là 2 CVE: CVE-2017-9248, CVE-2019-18935, cả 2 CVE đều đã public mã khai thác.
 
@@ -134,7 +134,7 @@ Trên ứng dụng tồn tại 2 lỗ hổng nghiêm trọng cho phép kẻ tấ
 <div class="thecap">Một vài request dùng Webshell mà kẻ tấn công để lại</div>
 </div> 
 
-**TIMELINE TẤN CÔNG**
+## TIMELINE TẤN CÔNG ##
 
 05-03-2020: Bắt đầu dò quét lỗ hổng trên dịch vụ web.
 
@@ -152,11 +152,11 @@ Trên ứng dụng tồn tại 2 lỗ hổng nghiêm trọng cho phép kẻ tấ
 - Mã hóa xong, kẻ tấn công tiến hành xóa dấu vết (webshell, ransomware).
  
 
-**KẾT LUẬN**
+## KẾT LUẬN ##
 
 Máy chủ web bị kẻ tấn công phát tán ransomware thông qua lỗ hổng web, cụ thể là Telerik Web UI (CVE-2017-9248, CVE-2019-18935) cho phép kẻ tấn công chạy shellcode, upload webshell nếu khai thác thành công.
 
-**KHUYẾN CÁO**
+## KHUYẾN CÁO ##
 
 - Cập nhật các bản vá Hệ điều hành và dịch vụ web thường xuyên.
 

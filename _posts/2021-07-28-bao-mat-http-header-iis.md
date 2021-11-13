@@ -423,14 +423,16 @@ Nếu muốn, bạn có thể chỉnh sửa rule và cuộn xuống sâu hơn đ
 Nếu không muốn sửa bằng giao diện thì bạn có thể sửa đổi trong file web.config như sau:
 
 ```config
-<rewrite>    
-  <outboundRules rewriteBeforeCache="true">
-    <rule name="Remove Server header">
-      <match serverVariable="RESPONSE_Server" pattern=".+" />
-      <action type="Rewrite" value="" />
-    </rule>
-  </outboundRules>
-</rewrite>
+<system.webServer>
+	<rewrite>    
+	  <outboundRules rewriteBeforeCache="true">
+		<rule name="Remove Server header">
+		  <match serverVariable="RESPONSE_Server" pattern=".+" />
+		  <action type="Rewrite" value="" />
+		</rule>
+	  </outboundRules>
+	</rewrite>
+</system.webServer>
 ```
 
 ### X-Powered-By ###
@@ -490,6 +492,14 @@ Nó tiết lộ phiên bản cụ thể của Asp.NET mà bạn đang chạy, v�
 ```
 <system.web>
 <httpRuntime enableVersionHeader="false" />
+</system.web>
+```
+
+Lưu ý: nếu trong file web.config đã có dòng <httpRuntime targetFramework="x.x.x" bổ sung vào trong thẻ đó. Ví dụ:
+
+```
+<system.web>
+<httpRuntime enableVersionHeader="false" targetFramework="x.x.x" />
 </system.web>
 ```
 
