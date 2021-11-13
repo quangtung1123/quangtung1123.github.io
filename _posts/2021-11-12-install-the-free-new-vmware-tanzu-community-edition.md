@@ -52,9 +52,9 @@ Tùy thuộc vào môi trường cục bộ của bạn, bạn có thể muốn 
 - Windows 10 64-bit: Home hoặc Pro 2004 (bản dựng 19041) trở lên hoặc Enterprise hoặc Education 1909 (bản dựng 18363) trở lên.
 - Bật tính năng **WSL 2** trên Windows. Để biết hướng dẫn chi tiết, hãy tham khảo tài liệu của Microsoft.
 - Các điều kiện tiên quyết về phần cứng sau đây là bắt buộc để chạy thành công WSL 2 trên Windows 10 hoặc Windows 11:
- - Bộ xử lý 64-bit với Dịch địa chỉ mức thứ hai (SLAT)
- - RAM hệ thống 4 GB
- - Hỗ trợ ảo hóa phần cứng cấp BIOS phải được bật trong cài đặt BIOS. Để biết thêm thông tin, hãy xem phần Ảo hóa.
+  - Bộ xử lý 64-bit với Dịch địa chỉ mức thứ hai (SLAT)
+  - RAM hệ thống 4 GB
+  - Hỗ trợ ảo hóa phần cứng cấp BIOS phải được bật trong cài đặt BIOS. Để biết thêm thông tin, hãy xem phần Ảo hóa.
 - Tải xuống và cài đặt [gói cập nhật nhân Linux](https://docs.microsoft.com/windows/wsl/wsl2-kernel).
 
 Lưu ý: Hỗ trợ ảo hóa phần cứng cấp BIOS phải được bật trong cài đặt BIOS. Nếu bạn đang triển khai từ một máy ảo (như tôi, từ máy ảo W10), bạn sẽ cần phải đi tới cài đặt máy ảo và kích hoạt công cụ ảo hóa **Virtualize Intel VT-x / EPT hoặc AMD-V / RVI** . Ảnh chụp màn hình từ phần mềm VMware Workstation.
