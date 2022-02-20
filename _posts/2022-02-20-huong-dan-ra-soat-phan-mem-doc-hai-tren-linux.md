@@ -22,7 +22,11 @@ Rà soát phần mềm độc hại
 
 **1. Kiểm tra mức độ tiêu tốn tài nguyên**
 
-Để kiểm tra tiến trình nào tiêu tốn tài nguyên hệ thống như CPU, RAM, chúng ta sử dụng lệnh: top
+Để kiểm tra tiến trình nào tiêu tốn tài nguyên hệ thống như CPU, RAM, chúng ta sử dụng lệnh: 
+
+```bash
+top
+```
 
 <div class="imgcap">
 <div >
@@ -35,15 +39,19 @@ Rà soát phần mềm độc hại
 
 Khi tìm thấy tiến trình đáng ngờ, bạn có thể xem thông tin chi tiết bằng lệnh:
 
-*ps -f --forest -C tên_tiến_trình*
+```bash
+ps -f --forest -C tên_tiến_trình
+```
 
 Để kết thúc tiến trình đáng ngờ, bạn dùng lệnh:
 
-*kill -9 pid_tiến trình*
+```bash
+kill -9 pid_tiến trình
+```
 
 **2. Kiểm tra mức sử dụng ổ đĩa**
 
-Để kiểm tra mức độ sử dụng ổ đĩa, chúng ta dùng công cụ iotop.
+Để kiểm tra mức độ sử dụng ổ đĩa, chúng ta dùng công cụ **iotop**.
 
 <div class="imgcap">
 <div >
@@ -52,7 +60,11 @@ Khi tìm thấy tiến trình đáng ngờ, bạn có thể xem thông tin chi t
 <div class="thecap"></div>
 </div>
 
-Để xem tiến trình nào đọc và ghi từ ổ đĩa trong mỗi 25 giây, ta dùng lệnh sudo pidstat -dl 25
+Để xem tiến trình nào đọc và ghi từ ổ đĩa trong mỗi 25 giây, ta dùng lệnh:
+
+```bash
+sudo pidstat -dl 25
+```
 
 <div class="imgcap">
 <div >
@@ -63,7 +75,11 @@ Khi tìm thấy tiến trình đáng ngờ, bạn có thể xem thông tin chi t
 
 **3. Kiểm tra các cổng mở**
 
-Phần mềm độc hại thường sẽ chạy trên một cổng nhất định, cố gắng mở cổng và thiết lập kết nối. Để xem các kết nối được thiết lập, ta dùng lệnh sudo ss -tupn
+Phần mềm độc hại thường sẽ chạy trên một cổng nhất định, cố gắng mở cổng và thiết lập kết nối. Để xem các kết nối được thiết lập, ta dùng lệnh:
+
+```bash
+sudo ss -tupn
+```
 
 <div class="imgcap">
 <div >
@@ -74,7 +90,11 @@ Phần mềm độc hại thường sẽ chạy trên một cổng nhất địn
 
 Khi thấy một kết nối đáng ngờ, chúng ta có thể chặn chúng bằng cách sử dụng iptables.
 
-Để xem trạng thái của các cổng đang mở, chúng ta dùng lệnh sudo ss -tulpn
+Để xem trạng thái của các cổng đang mở, chúng ta dùng lệnh:
+
+```bash
+sudo ss -tulpn
+```
 
 <div class="imgcap">
 <div >
@@ -85,7 +105,11 @@ Khi thấy một kết nối đáng ngờ, chúng ta có thể chặn chúng b�
 
 **4. Phân tích cách tệp được mở**
 
-Để xem các tệp nào được mở có liên kết với một tiến trình cụ thể, chúng ta dùng lệnh sudo lsof | grep tên_tiến_trình
+Để xem các tệp nào được mở có liên kết với một tiến trình cụ thể, chúng ta dùng lệnh:
+
+```bash
+sudo lsof | grep tên_tiến_trình
+```
 
 <div class="imgcap">
 <div >
@@ -98,15 +122,19 @@ Khi thấy một kết nối đáng ngờ, chúng ta có thể chặn chúng b�
 
 Để kiểm tra các dịch vụ đang chạy, chúng ta dùng lệnh:
 
-*systemctl list-unit-files | grep active*
+```bash
+systemctl list-unit-files | grep active
+```
 
 **6. Tìm các tệp được tạo gần đây**
 
-Phần mềm độc hại thường tạo ra một số tệp trên hệ thống cho một mục đích nhất định, chúng ta có thể tìm các tệp được tạo gần đây với lệnh find.
+Phần mềm độc hại thường tạo ra một số tệp trên hệ thống cho một mục đích nhất định, chúng ta có thể tìm các tệp được tạo gần đây với lệnh **find**.
 
-Ví dụ, để tìm các tệp được tạo trong 50 ngày trong thư mục , ta dùng lệnh:
+Ví dụ, để tìm các tệp được tạo trong 50 ngày trong thư mục, ta dùng lệnh:
 
-*find /bin/ -mtime -50*
+```bash
+find /bin/ -mtime -50
+```
 
 <div class="imgcap">
 <div >
@@ -117,21 +145,29 @@ Ví dụ, để tìm các tệp được tạo trong 50 ngày trong thư mục ,
 
 Để xem tất cả các tệp được truy cập trong 50 ngày, ta dùng lệnh:
 
-*find / -atime 50*
+```bash
+find / -atime 50
+```
 
 Để tìm các thuộc tính (permission, owner, group) đã bị thay đổi trong 50 phút trước đó, ta dùng lệnh:
 
-*find / -cmin -50*
+```bash
+find / -cmin -50
+```
 
 Để tìm tất cả các tệp đã được truy cập trong 60 phút trước đó, ta dùng lệnh:
 
-*find / -amin -60*
+```bash
+find / -amin -60
+```
 
 **7. Kiểm tra các dịch vụ chạy cùng với hệ thống khi khởi động**
 
 Phần mềm độc hại sẽ cố gắng tồn tại bền bỉ trên hệ thống, do đó, nó thường tìm cách khởi chạy cùng với hệ thống khi khởi động. Để kiểm tra các dịch vụ tự động chạy khi hệ thống khởi động, ta dùng lệnh:
 
-*systemctl list-unit-files | grep enabled*
+```bash
+systemctl list-unit-files | grep enabled
+```
 
 <div class="imgcap">
 <div >
@@ -142,9 +178,11 @@ Phần mềm độc hại sẽ cố gắng tồn tại bền bỉ trên hệ th�
 
 **8. Kiểm tra Cron job.**
 
-Để tránh sự phát hiện, phần mềm độc hại thường lập lịch để chạy một tác vụ nào đó trong khoảng thời gian xác định. Để đạt được điều này, malware thường sử dụng cron. Để kiểm tra tất cả các tác vụ đã được lập lịch cho tất cả user trên hệ , ta dùng lệnh:
+Để tránh sự phát hiện, phần mềm độc hại thường lập lịch để chạy một tác vụ nào đó trong khoảng thời gian xác định. Để đạt được điều này, malware thường sử dụng cron. Để kiểm tra tất cả các tác vụ đã được lập lịch cho tất cả user trên hệ thống, ta dùng lệnh:
 
-*for user in (cut -f1 -d: /etc/passwd); do sudo crontab -u(cut−f1−d:/etc/passwd);dosudocrontab−uuser -l 2>/dev/null | grep -v '^#'; done*
+```bash
+for user in (cut -f1 -d: /etc/passwd); do sudo crontab -u(cut−f1−d:/etc/passwd);dosudocrontab−uuser -l 2>/dev/null | grep -v '^#'; done
+```
 
 **9. Kiểm tra các tập lệnh được thực thi tự động**
 
