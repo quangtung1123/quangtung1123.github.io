@@ -55,7 +55,7 @@ kill -9 pid_tiến trình
 
 <div class="imgcap">
 <div >
-    <img src="/assets/huong-dan-ra-soat-phan-mem-doc-hai-tren-linux/Hinh2.png" width = "800">
+    <img src="/assets/huong-dan-ra-soat-phan-mem-doc-hai-tren-linux/Hinh3.png" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
@@ -68,7 +68,7 @@ sudo pidstat -dl 25
 
 <div class="imgcap">
 <div >
-    <img src="/assets/huong-dan-ra-soat-phan-mem-doc-hai-tren-linux/Hinh3.png" width = "800">
+    <img src="/assets/huong-dan-ra-soat-phan-mem-doc-hai-tren-linux/Hinh2.png" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
