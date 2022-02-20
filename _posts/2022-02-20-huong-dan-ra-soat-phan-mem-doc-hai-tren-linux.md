@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Hướng dẫn rà soát phần mềm độc hại trên Linux"
-date:   2022-02-20 15:10:00
+date:   2022-02-20 08:10:00
 permalink: 2022/02/20/huong-dan-ra-soat-phan-mem-doc-hai-tren-linux
 tags: Security Linux
 category: Security
