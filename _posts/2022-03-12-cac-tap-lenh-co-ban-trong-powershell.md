@@ -12,9 +12,9 @@ summary: Các tập lệnh cơ bản trong powershell
 
 Microsoft PowerShell là một tiện ích dòng lệnh và ngôn ngữ kịch bản, là công cụ mạnh mẽ dành cho các quản trị viên, giúp bạn có thể tự động hóa hàng loạt nhiệm vụ cho máy tính và mạng. PowerShell chứa các thành phần của Command Prompt và được xây dựng trên framework .NET. Dưới đây sẽ liệt kê các lệnh cơ bản trong PowerShell để có thể dễ dàng tra cứu khi cần sử dụng.
 
-|------------------+------------------+---------|
-| Lệnh rút gọn | Tên cmdlet | Ý nghĩa |
-|:----------------:|:----------------:|:---------|
+|------------------+------------------+-----------|
+| Lệnh rút gọn     | Tên cmdlet       | Ý nghĩa   |
+|:----------------:|:----------------:|:---------:|
 | %   | ForEach-Object | Performs an operation against each item in a collection of input objects. |
 | ?   | Where-Object | Selects objects from a collection based on their property values. |
 | ac  | Add-Content | Appends content, such as words or data, to a file. |
