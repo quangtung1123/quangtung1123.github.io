@@ -37,9 +37,19 @@ Tại giao diện Manual Partitioning, chúng ta có thể lựa chọn theo nhu
 
 Tiếp đó chọn button + để thêm các partition tùy ý.
 Theo mặc định chúng ta nên khởi tạo các partition bao gồm:
-- /boot với dung lượng từ 200MB trở lên, phân vùng này sẽ chứa các kernel dùng để boot hệ điều hành lên. Với 200MB có thể chưa được khoảng 4 phiên bản kernel.
-- swap: Tuy nhiên phần này tuy thuộc vào nhu cầu sử dụng và có thể mở rộng.
-- / là phần vùng cuối cùng cần được tạo, phân vùng này sẽ là nơi chứa toàn bộ dữ liệu máy chủ của bạn, trong một số trường hợp người quản trị sẽ chia từng phân vùng cụ thể như /home /var nhằm chia tách các dữ liệu với nhau. Dung lượng phân vùng / sẽ chọn toàn bộ phần AVAILABLE SPACE còn lại.
+- /boot phân vùng này sẽ chứa các kernel dùng để boot hệ điều hành lên. Khuyến nghị ít nhất 1 GB.
+- swap: hệ thống tệp hoán đổi hỗ trợ bộ nhớ ảo; dữ liệu được ghi vào hệ thống tệp hoán đổi khi không có đủ RAM để lưu trữ dữ liệu mà hệ thống của bạn đang xử lý. Dung lượng ổ cứng khuyến nghị như sau:
+
+|------------------+------------------+-----------|
+| Dung lượng RAM trong hệ thống | Dung lượng swap | Dung lượng swap cho phép ngủ đông |
+|:----------------:|:----------------:|:---------:|
+| Dưới 2 GB  | 2 lần dung lượng RAM | 3 lần dung lượng RAM |
+| 2 - 8 GB  | Bằng dung lượng RAM | 2 lần dung lượng RAM |
+| 8 - 64 GB | 4 GB đến 0.5 lần dung lượng RAM | 1.5 lần dung lượng RAM |
+| Trên 64 GB  | ít nhất 4 GB | không khuyến khích ngủ đông |
+
+- /home: Để lưu trữ dữ liệu người dùng riêng biệt với dữ liệu hệ thống, khuyến nghị ít nhất 1 GiB.
+- / là phần vùng cuối cùng cần được tạo, phân vùng này sẽ là nơi chứa toàn bộ dữ liệu máy chủ của bạn. Dung lượng phân vùng / sẽ chọn toàn bộ phần AVAILABLE SPACE còn lại. Khuyến nghị ít nhất 10 GiB.
 
 <div class="imgcap">
 <div >
