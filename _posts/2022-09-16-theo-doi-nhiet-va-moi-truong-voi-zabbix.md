@@ -217,4 +217,4 @@ Vậy là xong, bạn có thể kết nối với server và tiến hành theo d
 
 ## Tải template cho zabbix server##
 
-[TẢI TEMPLATE DHT22](template_dht22_module.zip)
+[TẢI TEMPLATE DHT22](/assets/theo-doi-nhiet-va-moi-truong-voi-zabbix/template_dht22_module.zip)
