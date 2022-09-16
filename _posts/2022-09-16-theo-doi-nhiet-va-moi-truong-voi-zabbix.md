@@ -139,7 +139,7 @@ sudo /home/pi/Adafruit_Python_DHT/examples/AdafruitDHT.py 22 2
 <div class="thecap"></div>
 </div>
 
-Cấu trúc của lệnh và các tham số: thâm số đầu là mã cảm biến (DHT22 => 22) tham số thứ 2 là thứ tự chân cắm GPIO trên board (số 2 như đã đề cập ở trên).
+Cấu trúc của lệnh và các tham số: tham số đầu là mã cảm biến (DHT22 => 22) tham số thứ 2 là thứ tự chân cắm GPIO trên board (số 2 như đã đề cập ở trên).
 
 Vậy là cảm biến đã hoạt động tốt. Tiếp theo ta sẽ cấu hình zabbix agent đọc các tham số từ kết quả trên ra biến để truyền tới server. Để đơn giản tôi chỉ sử dụng zabbix_get để kiểm tra sự trả kết quả của agent. Nếu bạn muốn tham khảo cách tạo keyitem trên server và kết nối với Zabbix agent trên Pi3 xin đọc các bài viết trước.
 
@@ -179,8 +179,12 @@ Chú ý: Để zabbix có thể chạy lệnh lấy dữ liệu, ta phải cấp
 Cách 1: cho phép zabbix user chạy script với quyền root: bằng cách sửa file sudo.conf:
 
 ```
-visudo
+sudo visudo
+```
 
+Sau đó thêm dòng này vào cuối file
+
+```
 zabbix ALL=(ALL) NOPASSWD: /home/pi/Adafruit_Python_DHT/examples/AdafruitDHT.py
 ```
 
