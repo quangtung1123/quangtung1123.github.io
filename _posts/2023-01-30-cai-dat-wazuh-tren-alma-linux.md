@@ -19,31 +19,37 @@ Cài đặt Wazuh lần lượt theo quy trình như sau:
 
 Wazuh Indexer có thể được cài đặt dưới dạng một nút đơn hoặc dưới dạng cụm nhiều nút.
 
-** Đề xuất phần cứng cho mỗi nút **
+**Đề xuất phần cứng cho mỗi nút**
 
+|---------------+----------+---------+---------+-----------|
 |  | Tối thiểu |  | Khuyến khích |  |
+|:----------------:|:----------------:|:---------:|:---------:|:---------:|
 | Thành phần | RAM (GB) | CPU (lõi) | RAM (GB) | CPU (lõi) |
 | Wazuh Indexer | 4 | 2 | 16 | 8 |
 
-** Yêu cầu về dung lượng ổ đĩa **
+**Yêu cầu về dung lượng ổ đĩa**
+
 - Lượng dữ liệu phụ thuộc vào các cảnh báo được tạo mỗi giây (APS). Bảng này nêu chi tiết dung lượng ổ đĩa ước tính cần thiết cho mỗi tác nhân để lưu trữ 90 ngày cảnh báo trên máy chủ bộ chỉ mục Wazuh, tùy thuộc vào loại thiết bị được giám sát.
 
+|---------------+----------+--------------------|
 | Tối thiểu | APS | Storage in Wazuh indexer (GB/90 days) |
+|:----------------:|:----------------:|:------------------:|
 | Servers | 0.25 | 3.7 |
 | Workstations | 0.1 | 1.5 |
 | Network devices | 0.5 | 7.4 |
 
 - Ví dụ: đối với môi trường có 80 máy trạm, 10 máy chủ và 10 thiết bị mạng, dung lượng lưu trữ cần thiết trên máy chủ bộ chỉ mục Wazuh trong 90 ngày có cảnh báo là 230 GB.
 
+**Cài đặt cụm Wazuh Indexer**
 
-** Cài đặt cụm Wazuh Indexer **
 Quá trình cài đặt được chia thành ba giai đoạn.
 - Cấu hình ban đầu
 - Cài đặt nút chỉ mục Wazuh
 - Khởi tạo cụm
 
-** Cấu hình ban đầu **
-Tạo chứng chỉ SSL để mã hóa thông tin liên lạc giữa các thành phần Wazuh và tạo mật khẩu ngẫu nhiên để bảo mật cài đặt của bạn.
+**Cấu hình ban đầu**
+
+- Tạo chứng chỉ SSL để mã hóa thông tin liên lạc giữa các thành phần Wazuh và tạo mật khẩu ngẫu nhiên để bảo mật cài đặt của bạn.
 - Tải xuống trợ lý cài đặt Wazuh và tệp cấu hình.
 ```
 curl -sO https://packages.wazuh.com/4.3/wazuh-install.sh
@@ -91,7 +97,8 @@ bash wazuh-install.sh --generate-config-files
 
 - Sao chép file *wazuh-install-files.tar* vào tất cả các máy chủ triển khai phân tán, bao gồm máy chủ Wazuh, bộ chỉ mục Wazuh và các nút bảng điều khiển Wazuh. Điều này có thể được thực hiện bằng cách sử dụng tiện ích scp.
 
-** Cài đặt các nút chỉ mục Wazuh **
+**Cài đặt các nút chỉ mục Wazuh**
+
 - Tải xuống file cài đặt Wazuh.
 
 ```
@@ -107,7 +114,8 @@ bash wazuh-install.sh --wazuh-indexer node-1
 
 Lặp lại giai đoạn này của quá trình cài đặt cho mọi nút bộ chỉ mục Wazuh trong cụm của bạn. Sau đó, tiến hành khởi tạo cụm một nút hoặc nhiều nút của bạn trong bước tiếp theo.
 
-** Khởi tạo cụm **
+**Khởi tạo cụm**
+
 - Giai đoạn cuối cùng của việc cài đặt cụm nút đơn hoặc đa nút của trình chỉ mục Wazuh bao gồm chạy tập lệnh quản trị bảo mật.
 - Chạy trợ lý cài đặt Wazuh với tùy chọn *--start-cluster* trên bất kỳ nút bộ chỉ mục Wazuh nào để tải thông tin chứng chỉ mới và khởi động cụm.
 ```
@@ -117,6 +125,7 @@ bash wazuh-install.sh --start-cluster
 *Ghi chú Bạn chỉ phải khởi tạo cụm một lần , không cần chạy lệnh này trên mọi nút.*
 
 **Kiểm tra cài đặt cụm**
+
 - Chạy lệnh sau để lấy mật khẩu quản trị viên:
 ```
 tar -axf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt -O | grep -P "\'admin\'" -A 1
@@ -158,16 +167,21 @@ Trình chỉ mục Wazuh hiện đã được cài đặt thành công và tiế
 
 Bạn có thể cài đặt Wazuh Server trên một máy chủ duy nhất. Ngoài ra, bạn có thể cài đặt nó được phân phối trong nhiều nút trong cấu hình cụm. Cấu hình nhiều nút cung cấp tính khả dụng cao và hiệu suất được cải thiện. Và nếu được kết hợp với bộ cân bằng tải mạng thì có thể sử dụng hiệu quả dung lượng của nó.
 
-** Đề xuất phần cứng cho mỗi nút **
+**Đề xuất phần cứng cho mỗi nút**
 
+|---------------+----------+---------+---------+-----------|
 |  | Tối thiểu |  | Khuyến khích |  |
+|:----------------:|:----------------:|:---------:|:---------:|:---------:|
 | Thành phần | RAM (GB) | CPU (lõi) | RAM (GB) | CPU (lõi) |
 | Wazuh Server | 2 | 2 | 4 | 8 |
 
-** Yêu cầu về dung lượng ổ đĩa **
+**Yêu cầu về dung lượng ổ đĩa**
+
 - Lượng dữ liệu phụ thuộc vào các cảnh báo được tạo mỗi giây (APS). Bảng này nêu chi tiết dung lượng ổ đĩa ước tính cần thiết cho mỗi tác nhân để lưu trữ 90 ngày cảnh báo trên máy chủ bộ chỉ mục Wazuh, tùy thuộc vào loại thiết bị được giám sát.
 
+|---------------+----------+--------------------|
 | Tối thiểu | APS | Storage in Wazuh indexer (GB/90 days) |
+|:----------------:|:----------------:|:------------------:|
 | Servers | 0.25 | 0.1 |
 | Workstations | 0.1 | 0.04 |
 | Network devices | 0.5 | 0.2 |
@@ -182,7 +196,7 @@ Bạn có thể cài đặt Wazuh Server trên một máy chủ duy nhất. Ngo�
 
 Hai biến này phải bằng 0 nếu môi trường hoạt động bình thường. Nếu không, các nút bổ sung có thể được thêm vào cụm.
 
-** Cài đặt cụm Wazuh Server **
+**Cài đặt cụm Wazuh Server**
 
 - Tải xuống trợ lý cài đặt Wazuh.
 ```
@@ -206,17 +220,19 @@ bash wazuh-install.sh --wazuh-server wazuh-1
 Quá trình cài đặt máy chủ Wazuh hiện đã hoàn tất và tiếp theo bạn có thể tiến hành cài đặt bảng điều khiển Wazuh. 
 
 ## Wazuh Dashboard ##
+
 Thành phần trung tâm này là một giao diện web linh hoạt và trực quan để khai thác, phân tích và trực quan hóa dữ liệu bảo mật. Nó cung cấp bảng điều khiển vượt trội, cho phép bạn điều hướng liền mạch qua giao diện người dùng.
 
 Với bảng điều khiển Wazuh, người dùng có thể trực quan hóa các sự kiện bảo mật, lỗ hổng được phát hiện, dữ liệu giám sát tính toàn vẹn của tệp, kết quả đánh giá cấu hình, sự kiện giám sát cơ sở hạ tầng đám mây và các tiêu chuẩn tuân thủ quy định.
 
-** Đề xuất phần cứng cho mỗi nút **
+**Đề xuất phần cứng cho mỗi nút**
 
 |  | Tối thiểu |  | Khuyến khích |  |
 | Thành phần | RAM (GB) | CPU (lõi) | RAM (GB) | CPU (lõi) |
 | Wazuh Server | 4 | 2 | 8 | 4 |
 
-** Cài đặt bảng điều khiển Wazuh **
+**Cài đặt bảng điều khiển Wazuh**
+
 - Tải xuống trợ lý cài đặt Wazuh. Có thể bỏ qua bước này nếu bạn đã cài đặt bộ chỉ mục Wazuh trên cùng một máy chủ.
 ```
 curl -sO https://packages.wazuh.com/4.3/wazuh-install.sh
@@ -260,4 +276,4 @@ Mật khẩu : <ADMIN_PASSWORD>
 Tất cả các thành phần trung tâm Wazuh đã được cài đặt thành công.
 
 **Tài liệu tham khảo**
-- [wazuh](https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/installation-assistant.html
+- [wazuh](https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/installation-assistant.html)
