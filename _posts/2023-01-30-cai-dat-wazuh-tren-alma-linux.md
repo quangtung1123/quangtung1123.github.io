@@ -263,12 +263,13 @@ tar -O -xvf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt
 ```
 
 - Truy cập giao diện web Wazuh bằng thông tin đăng nhập của bạn.
+
 ```
 URL: https://<wazuh-dashboard-ip>
 
-Tên người dùng : quản trị viên
+Tên người dùng: admin
 
-Mật khẩu : <ADMIN_PASSWORD>
+Mật khẩu: <ADMIN_PASSWORD>
 ```
 
 - Khi bạn truy cập bảng điều khiển Wazuh lần đầu tiên, trình duyệt sẽ hiển thị thông báo cảnh báo cho biết chứng chỉ không được cấp bởi cơ quan đáng tin cậy. Một ngoại lệ có thể được thêm vào trong các tùy chọn nâng cao của trình duyệt web. Để tăng cường bảo mật, thay vào đó, tệp root-ca.pem được tạo trước đó có thể được nhập vào trình quản lý chứng chỉ của trình duyệt. Ngoài ra, có thể định cấu hình chứng chỉ từ cơ quan đáng tin cậy.
