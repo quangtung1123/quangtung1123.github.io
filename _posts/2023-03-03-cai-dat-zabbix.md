@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Cài đặt Zabbix"
-date:   2022-09-16 10:48:00
+date:   2023-03-03 10:48:00
 permalink: 2023/03/03/cai-dat-zabbix
 tags: Monitoring Zabbix
 category: Monitoring
@@ -45,29 +45,31 @@ sudo systemctl start mariadb && sudo systemctl enable mariadb
 ```
 
 - Harden the MariaDB instance:
+
 ```
 sudo mariadb-secure-installation
-....
+
 Enter current password for root (enter for none): Press Enter
-.....
+
 Switch to unix_socket authentication [Y/n] y
-.....
+
 Change the root password? [Y/n] y
 New password: 
 Re-enter new password:
-.....
+
 Remove anonymous users? [Y/n] y
-....
+
 Disallow root login remotely? [Y/n] y
-....
+
 Remove test database and access to it? [Y/n] y
 
 Reload privilege tables now? [Y/n] y
-....
+
 Thanks for using MariaDB!
 ```
 
 - Login vào MariaDB server và tạo database cho Zabbix:
+
 ```
 mysql -uroot -p
 password
@@ -79,11 +81,13 @@ mysql> quit;
 ```
 
 - Import dữ liệu khởi tạo schema và data cho database:
+
 ```
-zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p zabbix
+sudo zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p zabbix
 ```
 
 - Disable lựa chọn log_bin_trust_function_creators sau khi importing database schema.
+
 ```
 # mysql -uroot -p
 password
@@ -131,6 +135,7 @@ sudo firewall-cmd --reload
 ## Mở Zabbix UI web page ##
 - Truy cập Zabbix web UI qua URL http://IP_Address/zabbix/ hoặc http://domain_name/zabbix/ và tiếp tục thực hiện cấu hình theo hướng dẫn của web.
 - Tài khoản đăng nhập mặc định là:
+
 ```
 Username: Admin
 Password: zabbix
