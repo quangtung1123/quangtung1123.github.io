@@ -31,6 +31,10 @@ LISTEN_PORT=10052
 
 # Number of worker threads that Zabbix Java Gateway starts
 START_POLLERS=5
+
+# uncomment to enable remote monitoring of the standard JMX objects on the Zabbix Java Gateway itself
+JAVA_OPTIONS="$JAVA_OPTIONS -Dcom.sun.management.jmxremote 				-Dcom.sun.management.jmxremote.port=12345 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.registry.ssl=false"
+
 ```
 
 - Cấu hình Zabbix server (sửa file /etc/zabbix/zabbix_server.conf) để kết nối đến Zabbix Java Gateway:
@@ -50,7 +54,7 @@ StartJavaPollers=5
 
 ```
 
-Xin lưu ý rằng cấu hình ở trên chỉ dành cho việc định cấu hình kết nối giữa Zabbix Java Gateway và máy chủ Zabbix. Kết nối giữa các nguồn chỉ số JMX và Cổng Java Zabbix được định cấu hình thông qua giao diện người dùng (UI) Web Zabbix. Mỗi nguồn chỉ số JMX được định cấu hình trong giao diện người dùng web dưới dạng máy chủ Zabbix (thiết bị mà Zabbix muốn giám sát). Chúng ta sẽ đi qua phần này trong phần 3.
+Lưu ý: cấu hình ở trên chỉ dành cho việc định cấu hình kết nối giữa Zabbix Java Gateway và máy chủ Zabbix. Kết nối giữa các nguồn JMX metrics và Zabbix Java Gateway được định cấu hình thông qua giao diện người dùng (UI) Web Zabbix.
 
 Sau khi thực hiện thay đổi cấu hình, hãy khởi động lại Zabbix Server và Zabbix Java Gateway:
 
@@ -59,8 +63,8 @@ sudo systemctl restart zabbix-java-gateway
 sudo systemctl restart zabbix-server
 ```
 
-## Cài đặt ##
-
+## Import template giám sát ##
+- Thực hiện tài template giám sát Cassandra trên zabbix và import vào zabbix để giám sát.
 
 
 **Tài liệu tham khảo**
