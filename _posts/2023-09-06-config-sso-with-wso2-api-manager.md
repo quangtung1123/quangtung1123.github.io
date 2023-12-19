@@ -1,121 +1,82 @@
 ---
 layout: post
 title:  "Cấu hình Single Sign On với WS02 API Manager"
-date:   2023-09-06 15:00:00
+date:   2023-09-06 08:00:00
 permalink: 2023/09/06/config-sso-with-wso2-api-manager
 tags: SSO WS02
 category: SSO
-img: /assets/config-sso-with-wso2-api-manager/Hinh1.jpg
+img: /assets/config-sso-with-wso2-api-manager/saml-sso-scenario-diagram.png
 summary: Cấu hình Single Sign On với WS02 API Manager
 
 ---
 
-## Tải WS02 ##
-- Tải bản cài đặt từ trang web của WS02 (phiên bản hiện tại 9/2023 là 4.2.0): https://wso2.com/api-manager
-- Giải nén và để vào thư mục bất kỳ trên Windows, ví dụ D:\wso2am-4.2.0
-
-## Cài đặt OpenJDK ##
-- Tải và cài đặt OpenJDK tương ứng với hệ điều hành và phiên bản WS02. Ví dụ: WS02 4.2.0 sẽ tương thích với OpenJDK 17: https://learn.microsoft.com/vi-vn/java/openjdk/download
-- Tải xong thì cài đặt vào windows. Lưu ý: chọn Add Path JAVA_HOME khi cài đặt, nếu không chọn thì thêm thủ công sau khi cài đặt.
-- Kiểm tra phiên bản java bằng cách mở Command Prompt và chạy lệnh 'java --version'
-```
-> java --version
-openjdk 17.0.8.1 2023-08-24 LTS
-OpenJDK Runtime Environment Microsoft-8297089 (build 17.0.8.1+1-LTS)
-OpenJDK 64-Bit Server VM Microsoft-8297089 (build 17.0.8.1+1-LTS, mixed mode, sharing)
-```
-
-***Lưu ý: tải OpenJDK, chứ không phải JDK***
-
-## Khởi động WSO2 ##
-- Vào thư mục bin trong thư mục chứa WS02 ở bước trên
-- Chạy file 'api-manager.bat'
-
-## Truy cập vào cấu hình ##
-- Truy cập các link phía dưới để sử dụng:
-```
-- https://localhost:9443/publisher
-- https://localhost:9443/carbon
-- https://localhost:9443/devportal
-```
-- Tài khoản, mật khẩu mặc định là admin/admin. Để thay đổi mật khẩu thì vào devportal và vào phần Change password.
-
-## Cấu hình tên miền ##
-Để thay đổi từ localhost sang 1 tên miền cụ thể, ví dụ: example.vn, ta thực hiện như sau:
-- Mở file <WS02_HOME>/repository/conf/deployment.toml
-- Chỉnh sửa thuộc tính hostname và các url có bắt đầu bằng http hoặc https sang tên miền tương ứng:
-
-```
-[server]
-hostname = "example.vn"
-
-service_url = "https://example.vn:${mgt.transport.https.port}/services/"
-
-http_endpoint = "http://example.vn:${http.nio.port}"
-https_endpoint = "https://example.vn:${https.nio.port}"
-websub_event_receiver_http_endpoint = "http://example.vn:9021"
-websub_event_receiver_https_endpoint = "https://example.vn:8021"
-
-notification_endpoint = "https://example.vn:${mgt.transport.https.port}/internal/data/v1/notify"
-```
-
-- Khởi động lại WS02;
-- Truy cập các link theo tên miền đã thiết lập để kiểm tra:
-```
-- https://example.vn:9443/publisher
-- https://example.vn:9443/carbon
-- https://example.vn:9443/devportal
-```
-
-Sau khi thay đổi tên miền thì truy cập vào publisher hoặc devportal sẽ báo lỗi "Hostname configuration in deployment.toml is not reflected in callback url for publisher and devportal". Ta xử lý như sau:
-- Đăng nhập vào carbon: https://example.vn:9443/carbon;
-- Vào phần Service providers list:
+## Cấu hình Single Sign On WSO2 cho ứng dụng SAML ##
+Có hai ứng dụng web SAML được gọi là pickup-dispatch và pickup-manager. Khi SSO được cấu hình cho cả hai ứng dụng này, nhân viên chỉ cần yêu cầu cung cấp thông tin xác thực của họ cho ứng dụng đầu tiên và người dùng sẽ tự động đăng nhập vào ứng dụng thứ hai theo mô hình sau:
 
 <div class="imgcap">
 <div >
-    <img src="/assets/Install-wso2-api-manager-on-windows/service-providers.png" width = "800">
+    <img src="/assets/config-sso-with-wso2-api-manager/saml-sso-scenario-diagram.png" width = "800">
 </div>
 <div class="thecap"></div>
 </div>
 
-- Click vào nút Edit của API Publisher service provider
-<div class="imgcap">
-<div >
-    <img src="/assets/Install-wso2-api-manager-on-windows/service-providers-list.png" width = "800">
-</div>
-<div class="thecap"></div>
-</div>
+### Khai báo service providers ###
+- Đăng nhập vào Management Console (https://<IS_HOST>:<PORT>/carbon);
+- Vào menu Main > Identity > Service Providers và click Add;
+- Nhập saml2-web-app-pickup-dispatch trong ô Service Provider Name và click Register.
+- Trong Inbound Authentication Configuration, click Configure ở dưới SAML2 Web SSO Configuration;
+- Nhập các trường thông tin sau:
+	- Issuer: saml2-web-app-pickup-dispatch.com
+	- Assertion Consumer URL: http://localhost.com:8080/saml2-web-app-pickup-dispatch.com/home.jsp
+- Click Yes.
+- Chọn các Checkbox sau:
+	- Enable Response Signing
+	- Enable Single Logout
+	- Enable Attribute Profile
+	- Include Attributes in the Response Always
+	- Enable Signature Validation in Authentication Requests and Logout Requests
 
-- Vào phần Inbound Authentication Configuration > OAuth/OpenID Connect Configuration và click vào nút Edit OAuth application.
+- Click Register để lưu lại.
+- Tạo thêm service Provider mới cho Pickup Manager tương tự như trên với các thông tin như sau:
+	- Name: saml2-web-app-pickup-manager
+	- Issuer : saml2-web-app-pickup-manager.com
+	- Assertion Consumer URL : http://localhost.com:8080/saml2-web-app-pickup-manager.com/home.jsp
 
-<div class="imgcap">
-<div >
-    <img src="/assets/Install-wso2-api-manager-on-windows/oauth-app-select.png" width = "800">
-</div>
-<div class="thecap"></div>
-</div>
-
-- Xem phần Callback Url regex và thay đổi từ localhost sang tên miền mới tương ứng:
-```
-regexp=(https://localhost:9443/publisher/services/auth/callback/login|https://localhost:9443/publisher/services/auth/callback/logout)
-```
-thay đổi thành:
-```
-regexp=(https://example.com:9443/publisher/services/auth/callback/login|https://example.com:9443/publisher/services/auth/callback/logout)
-```
-
-- Click vào nút Update trong trang Applications Settings, sau đó click nút Update trong trang service provider information để lưu lại.
-
-- Chọn service provider Cho API Developer Portal (apim_devportal) và lặp lại các bước 4 - bước 6 để thay đổi.
-
-## Cấu hình Single Sign On WSO2 Identity Server Samples ##
-- Tải các file saml2-web-app-pickup-dispatch.com.war, pickup-dispatch.war, pickup-manager.war từ https://github.com/wso2/samples-is/releases
-- Giải nén file saml2-web-app-pickup-dispatch.com.war vào thư mục webapps của Tomcat
-- Vào thư mục .../WEB-INF/classes và thay đổi thuộc tính SAML2.AssertionConsumerURL từ 'localhost.com' sang 'localhost' trong file sso.properties
+### Triển khai các ứng dụng mẫu ###
+- Cài đặt Apache Tomcat 8.x hoặc XAMPP để sử dụng Tomcat;
+- Tải về các mẫu saml2-web-app-pickup-manager.com.war và saml2-web-app-pickup-dispatch.com.war tại https://github.com/wso2/samples-is/releases
+- Giải nén file \*.war phía trên vào thư mục webapps của Tomcat
+- Vào thư mục .../WEB-INF/classes và thay đổi các thuộc tính từ 'https://localhost:9443' sang link thực tế của WSO2 trong file sso.properties
 - Khởi động lại Tomcat và truy cập ứng dụng http://localhost:8080/saml2-web-app-pickup-dispatch.com/index.jsp
+
+### Cấu hình xác nhận quyền truy cập (claims) ###
+Có thể cấu hình thêm xác nhận quyền truy cập như sau:
+- Trong Menu chính của management console, click Service Providers>List, và Edit "pickup-dispatch" service provider;
+- Mở rộng khối Claim Configuration trong service provider form.
+- Lựa chọn claims muốn gửi đến service provider. Chọn **Use Local Claim Dialect** và click Add Claim URI.
+- Thêm các thông tin Requested Claims như sau:
+	- http://wso2.org/claims/fullname
+	- http://wso2.org/claims/emailaddress
+- Chọn http://wso2.org/claims/fullname trong Subject claim URI và click Update để lưu cấu hình service provider.
+
+<div class="imgcap">
+<div >
+    <img src="/assets/config-sso-with-wso2-api-manager/dispatch-configure-claims.png" width = "800">
+</div>
+<div class="thecap"></div>
+</div>
+
+- Truy cập http://localhost:8080/saml2-web-app-pickup-dispatch.com trên trình duyệt và click Login.
+
+<div class="imgcap">
+<div >
+    <img src="/assets/config-sso-with-wso2-api-manager/dispatch-email-consent.png" width = "800">
+</div>
+<div class="thecap"></div>
+</div>
+
+Nếu hiện ra bảng xác nhận như trên thì đã cấu hình thành công các yêu cầu bổ sung cho nhà cung cấp dịch vụ của mình.
 
 
 ## Tham khảo ##
 - https://dzone.com/articles/configuring-sso-using-wso2-identity-server
-- [wso2](https://is.docs.wso2.com/en/latest/deploy/change-the-hostname/)
-- [wso2](https://apim.docs.wso2.com/en/latest/troubleshooting/troubleshooting-invalid-callback-error/)

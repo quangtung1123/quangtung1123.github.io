@@ -3,9 +3,9 @@ layout: post
 title:  "Cài đặt WS02 API Manager trên Windows"
 date:   2023-09-05 14:50:00
 permalink: 2023/09/05/Install-wso2-api-manager-on-windows
-tags: Monitoring Zabbix Cassandra
-category: Monitoring
-img: /assets/Install-wso2-api-manager-on-windows/Hinh1.jpg
+tags: SSO WS02
+category: SSO
+img: /assets/Install-wso2-api-manager-on-windows/oauth-app-select.png
 summary: Cài đặt WS02 API Manager trên Windows
 
 ---
@@ -108,14 +108,6 @@ regexp=(https://example.com:9443/publisher/services/auth/callback/login|https://
 
 - Chọn service provider Cho API Developer Portal (apim_devportal) và lặp lại các bước 4 - bước 6 để thay đổi.
 
-## Cấu hình Single Sign On WSO2 Identity Server Samples ##
-- Tải các file saml2-web-app-pickup-dispatch.com.war, pickup-dispatch.war, pickup-manager.war từ https://github.com/wso2/samples-is/releases
-- Giải nén file saml2-web-app-pickup-dispatch.com.war vào thư mục webapps của Tomcat
-- Vào thư mục .../WEB-INF/classes và thay đổi thuộc tính SAML2.AssertionConsumerURL từ 'localhost.com' sang 'localhost' trong file sso.properties
-- Khởi động lại Tomcat và truy cập ứng dụng http://localhost:8080/saml2-web-app-pickup-dispatch.com/index.jsp
-
-
 ## Tham khảo ##
-- https://dzone.com/articles/configuring-sso-using-wso2-identity-server
 - [wso2](https://is.docs.wso2.com/en/latest/deploy/change-the-hostname/)
 - [wso2](https://apim.docs.wso2.com/en/latest/troubleshooting/troubleshooting-invalid-callback-error/)
